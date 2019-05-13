@@ -1,0 +1,13 @@
+{
+	"title" : "Skills",
+	"skills" : {
+		"AWS" : "92",
+		"GCP" : "85",
+		"Solr" : "80",
+		"ElasticSearch" : "88",
+		"Terraform": "98",
+		"Serverless": "90",
+		"Jenkins": "92",
+		"Docker": "89"
+	}
+}

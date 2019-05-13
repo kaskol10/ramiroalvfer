@@ -1,0 +1,30 @@
+{
+	"title" : "Experience",
+	"experience" : [
+		{
+			"timeperiod" : "Sep 2013 - March 2014",
+			"company" : "Ikerlan IK-4",
+			"description" : "Embedded systems engineer "
+		},
+		{
+			"timeperiod" : "July 2014 - July 2015",
+			"company" : "IECISA",
+			"description" : "Network engineer in CPD Principado de Asturias. 24x7 support and management routers Cisco and Teldat (2000+)"
+		},
+		{
+			"timeperiod" : "Sep 2015 - Nov 2016",
+			"company" : "CSC",
+			"description" : "Application designer Ariba SAP Oracle. Mainly focus on automation, automation and automation. First contact with the DevOps culture as we know today. Sys admin and working with Jenkins, ElasticSearch, and Docker on Premise. Moreover, database administrator of Oracle and SQL."
+		},
+		{
+			"timeperiod" : "May 2017 - Nov 2017",
+			"company" : "DXC",
+			"description" : "Application designer Ariba SAP Oracle. Mainly focus on automation, automation and automation. First contact with the DevOps culture as we know today. Sys admin and working with Jenkins, ElasticSearch, and Docker on Premise. Moreover, database administrator of Oracle and SQL."
+		},
+		{
+			"timeperiod" : "Nov 2017 - Present",
+			"company" : "Empathy",
+			"description" : "DevOps engineer in multicloud environment of search e-commerce. "
+		}
+	]
+}

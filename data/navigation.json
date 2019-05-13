@@ -1,0 +1,14 @@
+[
+    {
+      "title" : "Articles",
+      "href" : "articles"
+    },
+    {
+      "title" : "Projects",
+      "href" : "projects"
+    },
+    {
+      "title" : "Home",
+      "href" : "#contact"
+    }
+  ]
