@@ -1,18 +1,18 @@
 <section class="white">
   <h2 class="heading">
-    <a class="text-dark" href="{{.Site.BaseURL}}articles">Articles</a>
+    <a class="text-dark" href="{{.Site.BaseURL}}articles/index.html">Articles</a>
   </h2>
 
   <div class="row">
     {{ range first 2 (where (where .Site.Pages "Section" "articles") ".Title" "!=" "Articles" )}}
     <div class="col-lg-5 col-md-5 col-12 mb-3">
         <div class="card p-4">
-          <a class="mb-3" href="{{ .Permalink }}">
+          <a class="mb-3" href="{{ .Permalink }}index.html">
             <div class="featuredImage rounded" style="background-size:cover;background-position:center;background-image: url('{{.Site.BaseURL}}images/articles/{{ .Params.featured_image }}'); height: 200px;background-color:#fbfbfb;">   
             </div>
           </a>
           <small class="text-muted">{{ .Date.Format "Jan 2, 2006"}}</small>
-          <a href="{{ .Permalink }}"><h3 class="h4 font-weight-bold text-dark">{{ .Title }}</h3></a>
+          <a href="{{ .Permalink }}index.html"><h3 class="h4 font-weight-bold text-dark">{{ .Title }}</h3></a>
           
           <div>
             {{ range .Params.categories }}

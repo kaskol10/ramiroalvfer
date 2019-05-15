@@ -17,7 +17,7 @@
             </div>
             <div class="col-12 col-lg-8 col-sm-12 col-md-7">
               <small class="text-muted">{{.Date.Format "Jan 2, 2006"}}</small>
-            <h2 class="heading mb-0"><a class="text-dark" href="{{.Permalink}}">{{.Title}}</a></h2>
+            <h2 class="heading mb-0"><a class="text-dark" href="{{.Permalink}}index.html">{{.Title}}</a></h2>
             <small class="text-muted" style="text-transform:uppercase">{{ if .Params.categories }}
                 <span>        
                   {{ range .Params.categories }}
@@ -29,7 +29,7 @@
                 {{ end }}
               </small>
             
-            <p>{{ .Description }} <a class="text-muted d-inline" href="{{.Permalink}}">Read More...</a></p>
+            <p>{{ .Description }} <a class="text-muted d-inline" href="{{.Permalink}}index.html">Read More...</a></p>
             
             </div>
           </div>

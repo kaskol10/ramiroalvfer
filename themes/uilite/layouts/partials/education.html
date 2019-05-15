@@ -1,0 +1,20 @@
+{{ $education := .Site.Data.education }}
+
+<section id="education" class="yellow">
+  <h2 class="heading">{{ $education.title }}</h2>
+  <div id="timeline">
+    {{ range $index, $element := $education.education }}
+    <div class="timeline-item clearfix">
+      <div class="timeline-icon"></div>
+      
+      <div class="timeline-content {{ if eq (mod $index 2) 0 }} right {{ end }}">
+        <span class="date">{{ $element.timeperiod }}</span>
+        <h6 class="h5 my-2">{{ $element.title }}</h6>
+        <a href="{{ $element.link }}" target="_blank"><img class="featuredImage rounded" src="{{.Site.BaseURL}}images/education/{{ $element.image }}" alt="" width="220px";></a>
+        <p class="">{{ $element.description }}</p>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+
+</section>

@@ -1,14 +1,14 @@
 [
     {
       "title" : "Articles",
-      "href" : "articles"
+      "href" : "articles/index.html"
     },
     {
       "title" : "Projects",
-      "href" : "projects"
+      "href" : "projects/index.html"
     },
     {
       "title" : "Home",
-      "href" : "#contact"
+      "href" : ""
     }
   ]
