@@ -8,8 +8,8 @@ sections:
   path: static/certs
   label: Certs
   create: documents
-  match: "**/*"
-  new_doc_ext: pdf
+  match: "*"
+  new_doc_ext: ".pdf"
 - type: directory
   path: data
   label: Data
