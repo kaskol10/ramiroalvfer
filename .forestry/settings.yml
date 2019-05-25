@@ -31,8 +31,8 @@ sections:
   label: Articles
   create: all
   match: "**/*"
-upload_dir: img
-public_path: img
+upload_dir: images
+public_path: images
 front_matter_path: ''
 use_front_matter_path: 
 file_template: ":filename:"
