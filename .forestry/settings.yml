@@ -9,7 +9,7 @@ sections:
   label: Certs
   create: documents
   match: "*"
-  new_doc_ext: ".pdf"
+  new_doc_ext: pdf
 - type: directory
   path: data
   label: Data
