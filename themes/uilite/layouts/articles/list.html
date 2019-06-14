@@ -11,7 +11,7 @@
             <div class="col-12 col-lg-4 col-sm-12 col-md-5">
                 {{ if .Params.featured_image }}
                   <!-- <img class="my-4 rounded" src="{{.Site.BaseURL}}images/blog/{{ .Params.featured_image }}" alt=""> -->
-                  <div class="featuredImage rounded" style="background-size:cover;background-position:center;background-image: url('{{.Site.BaseURL}}images/articles/{{ .Params.featured_image }}'); height: 200px;background-color:#fbfbfb;">   
+                  <div class="featuredImage rounded" style="background-size:cover;background-position:center;background-image: url('{{.Site.BaseURL}}images/{{ .Params.featured_image }}'); height: 200px;background-color:#fbfbfb;">   
                   </div>
                   {{ end }}
             </div>
