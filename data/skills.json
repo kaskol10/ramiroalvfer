@@ -1,13 +1,37 @@
 {
 	"title" : "Skills",
-	"skills" : {
-		"AWS" : "92",
-		"GCP" : "85",
-		"Solr" : "80",
-		"ElasticSearch" : "88",
-		"Terraform": "98",
-		"Serverless": "90",
-		"Jenkins": "92",
-		"Docker": "89"
-	}
+	"skills": [
+		{
+			"key": "AWS",
+			"value": "92"
+		},
+		{
+			"key": "GCP",
+			"value": "85"
+		},
+		{
+			"key": "Solr",
+			"value": "80"
+		},
+		{
+			"key": "ElasticSearch",
+			"value": "88"
+		},
+		{
+			"key": "Terraform",
+			"value": "98"
+		},
+		{
+			"key": "Serverless",
+			"value": "90"
+		},
+		{
+			"key": "Jenkins",
+			"value": "92"
+		},
+		{
+			"key": "Docker",
+			"value": "89"
+		}
+	]
 }

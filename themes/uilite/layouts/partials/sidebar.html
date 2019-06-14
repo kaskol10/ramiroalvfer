@@ -10,9 +10,9 @@
 
     <div class="social my-4">
 
-      {{ range $key, $value := $social }}
-        <a target="_blank" href="{{ $value }}">
-          <i class="{{ $key }}"></i>
+      {{ range $index, $element := $social.social }}
+        <a target="_blank" href="{{ $element.value }}">
+          <i class="{{ $element.key }}"></i>
         </a>
       {{ end }}
       
