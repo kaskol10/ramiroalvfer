@@ -11,11 +11,6 @@ sections:
   match: "**/*"
   new_doc_ext: json
 - type: directory
-  path: content
-  label: Pages
-  create: all
-  match: "*"
-- type: directory
   path: content/projects
   label: Projects
   create: all
