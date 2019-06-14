@@ -1,4 +1,5 @@
 baseURL = "https://ramiroalvfer.dev/"
+#baseURL = "http://localhost:1313"
 languageCode = "ES-ES"
 title = "ramiroalvfer.dev"
 theme = "uilite"
