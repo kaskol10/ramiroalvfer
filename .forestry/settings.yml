@@ -5,11 +5,11 @@ admin_path: ''
 webhook_url: 
 sections:
 - type: directory
-  path: static/certs
+  path: static
   label: Certs
-  create: documents
+  create: all
   match: "**/*"
-  new_doc_ext: pdf
+  new_doc_ext: ''
 - type: directory
   path: data
   label: Data
