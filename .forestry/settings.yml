@@ -9,7 +9,7 @@ sections:
   label: Certs
   create: all
   match: "**/*"
-  new_doc_ext: ''
+  new_doc_ext: '20190613181812'
 - type: directory
   path: data
   label: Data
