@@ -6,9 +6,9 @@ webhook_url:
 sections:
 - type: directory
   path: 'data '
-  label: Data
+  label: Education
   create: documents
-  match: "**/*"
+  match: education.json
   new_doc_ext: json
 - type: directory
   path: content
