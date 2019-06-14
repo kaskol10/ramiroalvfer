@@ -7,8 +7,9 @@ sections:
 - type: directory
   path: 'data '
   label: Data
-  create: all
+  create: documents
   match: "**/*"
+  new_doc_ext: ".json"
 - type: directory
   path: content
   label: Pages
