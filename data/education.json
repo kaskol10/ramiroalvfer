@@ -42,6 +42,12 @@
       "image": "googlecloud.png",
       "link": "https://www.credential.net/utpfud5p",
       "description": ""
+    },
+    {
+      "timeperiod": "July 2019",
+      "title": "Certified Kubernetes Application Developer",
+      "image": "logo_ckad.png",
+      "link": "https://ramiroalvfer.dev/images/ckad.pdf"
     }
   ]
 }
