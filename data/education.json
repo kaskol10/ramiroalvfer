@@ -47,7 +47,8 @@
       "timeperiod": "July 2019",
       "title": "Certified Kubernetes Application Developer",
       "image": "logo_ckad.png",
-      "link": "https://ramiroalvfer.dev/images/ckad.pdf"
+      "link": "https://ramiroalvfer.dev/images/ckad.pdf",
+      "description": " "
     }
   ]
 }
