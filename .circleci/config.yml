@@ -8,10 +8,9 @@ jobs:
       - checkout
       - run: 
           name: Update 
-          command: apk add --update \
-                    python \
-                    python-dev \
-                    py-pip
+          command: apk add --update
+          command: apk add python
+          command: apk add py-pip
       - run:
           name: Install awscli
           command: pip install awscli
