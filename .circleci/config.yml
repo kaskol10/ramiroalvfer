@@ -9,7 +9,11 @@ jobs:
       - run: 
           name: Update 
           command: apk add --update
+      - run: 
+          name: Install python
           command: apk add python
+      - run:
+          name: Install pip 
           command: apk add py-pip
       - run:
           name: Install awscli
