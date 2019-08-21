@@ -1,0 +1,24 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: cibuilds/hugo:0.55.6
+    working_directory: ~/project
+    steps:
+      - checkout
+      - run:
+          name: Install awscli
+          command: sudo pip install awscli
+      - run:
+          name: "Run Hugo"
+          command: HUGO_ENV=production hugo -v -s ~/project/src/
+      - run:
+          name: "Test Website"
+          command: htmlproofer ~/project/src/public --allow-hash-href --check-html --empty-alt-ignore
+      - deploy:
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              aws s3 sync src/public s3://ramiroalvfer.dev --recursive
+              aws cloudfront create-invalidation --distribution-id E35ZAF01RR2NQ6 --paths /*
+              echo 'Invalidate'
+            fi
