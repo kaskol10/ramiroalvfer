@@ -6,9 +6,15 @@ jobs:
     working_directory: ~/project
     steps:
       - checkout
+      - run: 
+          name: Update 
+          command: apk add --update \
+                    python \
+                    python-dev \
+                    py-pip
       - run:
           name: Install awscli
-          command: sudo pip install awscli
+          command: pip install awscli
       - run:
           name: "Run Hugo"
           command: HUGO_ENV=production hugo -v -s ~/project/src/
