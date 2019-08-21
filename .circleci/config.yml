@@ -20,14 +20,12 @@ jobs:
           command: pip install awscli
       - run:
           name: "Run Hugo"
-          command: HUGO_ENV=production hugo -v -s ~/project/src/
-      - run:
-          name: "Test Website"
-          command: htmlproofer ~/project/src/public --allow-hash-href --check-html --empty-alt-ignore
+          command: hugo -v -s ~/project/ -d public
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              aws s3 sync src/public s3://ramiroalvfer.dev --recursive
+              cd ~/project/public
+              aws s3 sync . s3://ramiroalvfer.dev 
               aws cloudfront create-invalidation --distribution-id E35ZAF01RR2NQ6 --paths /*
               echo 'Invalidate'
             fi
