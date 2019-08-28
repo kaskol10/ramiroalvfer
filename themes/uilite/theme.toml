@@ -17,3 +17,8 @@ min_version = "0.31.1"
 [developer]
 	name = "Arvind"
 	homepage = "https://heyarviind.com"
+
+[sitemap]
+  changefreq = "monthly"
+  filename = "sitemap.xml"
+  priority = 0.5
