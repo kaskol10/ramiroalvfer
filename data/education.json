@@ -40,7 +40,7 @@
       "timeperiod": "April 2019",
       "title": "Google Cloud Associate Cloud Engineer",
       "image": "googlecloud.png",
-      "link": "https://www.credential.net/utpfud5p",
+      "link": "https://ramiroalvfer.dev/images/AssociateCloudEngineer.pdf",
       "description": ""
     },
     {
@@ -48,6 +48,13 @@
       "title": "Certified Kubernetes Application Developer",
       "image": "logo_ckad.png",
       "link": "https://ramiroalvfer.dev/images/ckad.pdf",
+      "description": ""
+    },
+    {
+      "timeperiod": "December 2019",
+      "title": "Google Cloud Professional Cloud Architect",
+      "image": "ProfessionalCloudArchitect.png",
+      "link": "https://ramiroalvfer.dev/images/ProfessionalCloudArchitect.pdf",
       "description": ""
     }
   ]
