@@ -1,28 +1,32 @@
 {
-    "social" : [
-        {
-            "key": "fab fa-instagram",
-            "value": "https://www.instagram.com/_iamrams_/"
-        },
-        {
-            "key": "fab fa-github",
-            "value": "https://github.com/kaskol10"
-        },
-        {
-            "key": "fab fa-medium",
-            "value": "https://medium.com/@ramiroalvfer"
-        },
-        {
-            "key": "fab fa-reddit",
-            "value": "https://www.reddit.com/user/kaskol10"
-        },
-        {
-            "key": "fab fa-linkedin",
-            "value": "https://www.linkedin.com/in/ramiro-alvarez-fernandez-3b945b77/"
-        },
-        {
-            "key": "fab fa-spotify",
-            "value": "https://open.spotify.com/user/ramiroalvfer?si=-HIA8u7VTLWOuM68D0by3g"
-        }
-    ]
+  "social": [
+    {
+      "key": "fab fa-instagram",
+      "value": "https://www.instagram.com/_iamrams_/"
+    },
+    {
+      "key": "fab fa-github",
+      "value": "https://github.com/kaskol10"
+    },
+    {
+      "key": "fab fa-medium",
+      "value": "https://medium.com/@ramiroalvfer"
+    },
+    {
+      "key": "fab fa-reddit",
+      "value": "https://www.reddit.com/user/kaskol10"
+    },
+    {
+      "key": "fab fa-linkedin",
+      "value": "https://www.linkedin.com/in/ramiro-alvarez-fernandez-3b945b77/"
+    },
+    {
+      "key": "fab fa-twitter",
+      "value": "https://twitter.com/kaskol10"
+    },
+    {
+      "key": "fab fa-spotify",
+      "value": "https://open.spotify.com/user/ramiroalvfer?si=-HIA8u7VTLWOuM68D0by3g"
+    }
+  ]
 }

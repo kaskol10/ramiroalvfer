@@ -1,37 +1,45 @@
 {
-	"title" : "Skills",
-	"skills": [
-		{
-			"key": "AWS",
-			"value": "92"
-		},
-		{
-			"key": "GCP",
-			"value": "85"
-		},
-		{
-			"key": "Solr",
-			"value": "80"
-		},
-		{
-			"key": "ElasticSearch",
-			"value": "88"
-		},
-		{
-			"key": "Terraform",
-			"value": "98"
-		},
-		{
-			"key": "Serverless",
-			"value": "90"
-		},
-		{
-			"key": "Jenkins",
-			"value": "92"
-		},
-		{
-			"key": "Docker",
-			"value": "89"
-		}
-	]
+  "title": "Skills",
+  "skills": [
+    {
+      "key": "AWS",
+      "value": "92"
+    },
+    {
+      "key": "GCP",
+      "value": "85"
+    },
+    {
+      "key": "Solr",
+      "value": "80"
+    },
+    {
+      "key": "ElasticSearch",
+      "value": "88"
+    },
+    {
+      "key": "Terraform",
+      "value": "98"
+    },
+    {
+      "key": "Serverless",
+      "value": "90"
+    },
+    {
+      "key": "Kubernetes",
+      "value": "85"
+    },
+    {
+      "key": "Jenkins",
+      "value": "92"
+    },
+    {
+      "key": "Docker",
+      "value": "89"
+    },
+    {
+      "key": "Spinnaker",
+      "value": "75"
+    }
+  ]
 }
