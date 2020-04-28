@@ -51,11 +51,18 @@
       "description": ""
     },
     {
+      "timeperiod": "December 2019",
+      "title": "Google Cloud Professional Cloud Architect",
+      "image": "ProfessionalCloudArchitect.png",
+      "link": "https://ramiroalvfer.dev/images/ProfessionalCloudArchitect.pdf",
+      "description": ""
+    },
+    {
       "timeperiod": "April 2020",
-      "description": "",
       "title": "Elastic Certified Engineer",
-      "image": "certificate.png",
-      "link": "https://badge.trueability.com/issued_certifications/473D2XEaLpV.html"
+      "image": "elastic.png",
+      "link": "https://badge.trueability.com/issued_certifications/473D2XEaLpV.html",
+      "description": ""
     }
   ]
 }
