@@ -44,6 +44,10 @@
     {
       "key": "Spinnaker",
       "value": "75"
+    },
+    {
+      "key": "Argo",
+      "value": "80"
     }
   ]
 }
