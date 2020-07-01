@@ -61,7 +61,21 @@
       "timeperiod": "April 2020",
       "title": "Elastic Certified Engineer",
       "image": "elastic.png",
-      "link": "https://badge.trueability.com/issued_certifications/473D2XEaLpV.html",
+      "link": "https://ramiroalvfer.dev/images/ElasticCertified.pdf",
+      "description": ""
+    },
+    {
+      "timeperiod": "June 2020",
+      "title": "HashiCorp Certified: Terraform Associate",
+      "image": "terraformAssociate.png",
+      "link": "https://ramiroalvfer.dev/images/terraformAssociate.pdf",
+      "description": ""
+    },
+    {
+      "timeperiod": "July 2020",
+      "title": "Microsoft Certified: Azure Fundamentals",
+      "image": "AZ900.png",
+      "link": "https://ramiroalvfer.dev/images/AZ900.pdf",
       "description": ""
     }
   ]
