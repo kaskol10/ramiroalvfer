@@ -77,6 +77,13 @@
       "image": "AZ900.png",
       "link": "https://ramiroalvfer.dev/images/AZ900.pdf",
       "description": ""
+    },
+    {
+      "timeperiod": "September 2020",
+      "title": "MongoDB Certified: DBA Associate Level",
+      "image": "mongodba.png",
+      "link": "https://ramiroalvfer.dev/images/mongodba.pdf",
+      "description": ""
     }
   ]
 }
