@@ -14,6 +14,7 @@ This post was presented in Google DevFest Asturias 2019, you can check the talk 
 * [https://github.com/empathyco/spark-cloudproviders](https://github.com/empathyco/spark-cloudproviders "https://github.com/empathyco/spark-cloudproviders") 
 
 If you have any comment, please don't hesitate to contact me in the social network:
+
 * [Twitter](https://twitter.com/kaskol10)
 * [Instagram](https://www.instagram.com/_iamrams_/)
 * [Linkedin](https://www.linkedin.com/in/ramiro-alvarez-fernandez-3b945b77/)
