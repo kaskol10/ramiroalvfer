@@ -1,0 +1,5 @@
+# Local secrets for `wrangler pages dev` (copy to .dev.vars — never commit)
+TURNSTILE_SECRET_KEY=
+# RESEND_API_KEY=
+# NEWSLETTER_FROM=K8sCockpit <broadcast@k8scockpit.tech>
+PUBLIC_SITE_URL=http://127.0.0.1:8788

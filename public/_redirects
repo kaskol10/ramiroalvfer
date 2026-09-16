@@ -1,0 +1,32 @@
+# Legacy Bloggrify/Nuxt paths
+/archives /blog 301
+/portfolio /cv 301
+/contact /cv 301
+/feed.xml /rss.xml 301
+
+# Common old post URL patterns (Nuxt Content often used /posts/slug or /slug)
+/posts/:slug /blog/:slug 301
+
+# Direct post slugs from previous site
+/argo-rollouts-adoption /blog/argo-rollouts-adoption 301
+/aws-emr-to-kubernetes-migration /blog/aws-emr-to-kubernetes-migration 301
+/aws-genai-professional /blog/aws-genai-professional 301
+/cloud-finops-cost-report /blog/cloud-finops-cost-report 301
+/cloud-finops-kubernetes-cost /blog/cloud-finops-kubernetes-cost 301
+/cloud-finops-principles /blog/cloud-finops-principles 301
+/cloud-finops-tag-allocation /blog/cloud-finops-tag-allocation 301
+/cloud-finops-usage-report /blog/cloud-finops-usage-report 301
+/cloudnative-pg /blog/cloudnative-pg 301
+/cnpg-migrator /blog/cnpg-migrator 301
+/collaborative-architecture-diagrams /blog/collaborative-architecture-diagrams 301
+/develop-directly-inside-kubernetes /blog/develop-directly-inside-kubernetes 301
+/gpu-hami-k8s /blog/gpu-hami-k8s 301
+/gpu-operator-mig /blog/gpu-operator-mig 301
+/kagent /blog/kagent 301
+/monitoring-aws-credentials-age /blog/monitoring-aws-credentials-age 301
+/on-call-engineering /blog/on-call-engineering 301
+/progressive-delivery-kubernetes /blog/progressive-delivery-kubernetes 301
+/rss-ai /blog/rss-ai 301
+/running-apache-flink-on-kubernetes /blog/running-apache-flink-on-kubernetes 301
+/running-apache-spark-on-kubernetes /blog/running-apache-spark-on-kubernetes 301
+/archives/ /blog 301

@@ -1,0 +1,105 @@
+---
+import { site, socials } from '../data/socials';
+import { totalStars, projects, productProjects } from '../data/projects';
+
+const aiProjects = projects.filter((p) => p.themes?.includes('ai')).length;
+---
+
+<section class="relative overflow-hidden border-b border-line">
+  <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(45,212,191,0.12),transparent_55%)]"></div>
+  <div class="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-[1.2fr_0.8fr] md:items-end md:px-6 md:py-24 lg:py-28">
+    <div class="relative z-10">
+      <p class="label mb-5 text-accent">
+        {site.persona} · Golden Kubestronaut · Platform & inference
+      </p>
+      <h1 class="font-display text-5xl font-bold leading-[0.95] tracking-tight text-bone sm:text-6xl lg:text-7xl">
+        {site.name}
+        <span class="block text-bone-dim">
+          <span class="text-ash">builds</span>{' '}
+          <em id="hero-rotate" class="not-italic text-accent">in the open.</em>
+        </span>
+      </h1>
+      <p class="mt-6 max-w-xl text-base leading-relaxed text-ash sm:text-lg">
+        {site.description}
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          href="#projects"
+          class="border border-accent bg-accent/10 px-5 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-accent hover:bg-accent hover:text-ink"
+        >
+          View projects ▾
+        </a>
+        <a
+          href={socials.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="border border-line px-5 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-bone-dim hover:border-accent hover:text-accent"
+        >
+          github.com/kaskol10
+        </a>
+      </div>
+      <dl class="mt-12 grid grid-cols-2 gap-px border border-line bg-line sm:grid-cols-4">
+        <div class="bg-surface-raised p-4">
+          <dt class="label">GitHub stars</dt>
+          <dd class="mt-2 font-display text-2xl font-semibold text-bone">{totalStars}+</dd>
+        </div>
+        <div class="bg-surface-raised p-4">
+          <dt class="label">Credential</dt>
+          <dd class="mt-2 font-display text-lg font-semibold leading-tight text-bone">Golden Kubestronaut</dd>
+        </div>
+        <div class="bg-surface-raised p-4">
+          <dt class="label">Products</dt>
+          <dd class="mt-2 font-display text-lg font-semibold leading-tight text-bone">
+            {productProjects.length} live
+          </dd>
+        </div>
+        <div class="bg-surface-raised p-4">
+          <dt class="label">Self-hosted AI</dt>
+          <dd class="mt-2 font-display text-2xl font-semibold text-bone">{aiProjects} tools</dd>
+        </div>
+      </dl>
+    </div>
+    <div class="relative z-10 hidden justify-self-end md:block">
+      <div class="frame border border-line bg-surface-raised p-2">
+        <img
+          src={site.portrait}
+          alt={`${site.name} speaking at KCD Spain`}
+          class="h-[340px] w-[280px] object-cover grayscale contrast-110"
+          width="280"
+          height="340"
+        />
+        <p class="mt-2 px-1 font-mono text-[10px] uppercase tracking-[0.14em] text-ash">
+          Station · {site.location}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const phrases = [
+    'in the open.',
+    'CanISpot.ai.',
+    'MiniRSS.ai.',
+    'self-hosted AI platforms.',
+    'inference on Kubernetes.',
+    'Karpenter costs down.',
+    'CloudNativePG migrations.',
+    'platform tooling.',
+  ];
+  const el = document.getElementById('hero-rotate');
+  let i = 0;
+  if (el) {
+    setInterval(() => {
+      i = (i + 1) % phrases.length;
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(4px)';
+      setTimeout(() => {
+        el.textContent = phrases[i];
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }, 220);
+    }, 3200);
+    el.style.transition = 'opacity 0.22s ease, transform 0.22s ease';
+  }
+</script>

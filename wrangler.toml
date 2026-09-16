@@ -1,0 +1,17 @@
+name = "k8scockpit"
+compatibility_date = "2025-09-01"
+pages_build_output_dir = "dist"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "k8scockpit-broadcast"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+migrations_dir = "migrations"
+
+[vars]
+PUBLIC_SITE_URL = "https://k8scockpit.tech"
+# NEWSLETTER_FROM = "K8sCockpit <broadcast@k8scockpit.tech>"
+
+# Secrets (set via `wrangler pages secret put` or Pages dashboard — do not commit):
+#   TURNSTILE_SECRET_KEY
+#   RESEND_API_KEY          (optional — enables double opt-in email)

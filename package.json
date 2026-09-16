@@ -1,0 +1,38 @@
+{
+  "name": "k8scockpit",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "npm run generate-cv-pdf && astro dev",
+    "build": "npm run generate-cv-pdf && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "generate-cv-pdf": "tsx scripts/generate-cv-pdf.ts",
+    "refresh-stars": "node scripts/refresh-stars.mjs",
+    "pages:dev": "npm run build && wrangler pages dev dist",
+    "db:migrate:local": "wrangler d1 migrations apply k8scockpit-broadcast --local",
+    "db:migrate:remote": "wrangler d1 migrations apply k8scockpit-broadcast --remote"
+  },
+  "dependencies": {
+    "@astrojs/markdown-satteri": "^0.4.1",
+    "@astrojs/mdx": "^8.0.1",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.4",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.2",
+    "pdf-lib": "^1.17.1",
+    "sharp": "^0.35.4",
+    "tailwindcss": "^4.3.3"
+  },
+  "allowScripts": {
+    "esbuild": true
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260916.1",
+    "tsx": "^4.23.13",
+    "wrangler": "^4.132.0"
+  }
+}

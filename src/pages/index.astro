@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Projects from '../components/Projects.astro';
+import Dispatches from '../components/Dispatches.astro';
+import Newsletter from '../components/Newsletter.astro';
+import { talks } from '../data/talks';
+
+const posts = (await getCollection('posts')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+---
+
+<Layout>
+  <Hero />
+  <Projects />
+  <Dispatches talks={talks} posts={posts} />
+  <Newsletter />
+</Layout>

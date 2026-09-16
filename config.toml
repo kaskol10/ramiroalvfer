@@ -1,8 +1,0 @@
-baseURL = "https://ramiroalvfer.dev/"
-#baseURL = "http://localhost:1313"
-languageCode = "ES-ES"
-title = "ramiroalvfer.dev"
-theme = "uilite"
-paginate = 10
-enableRobotsTXT = true
-canonifyURLs = true 

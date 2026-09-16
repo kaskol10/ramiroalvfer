@@ -1,0 +1,146 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site, socials } from '../data/socials';
+import { experience, skills } from '../data/experience';
+import { certifications, highlightCerts } from '../data/certifications';
+---
+
+<Layout title="CV" description={`Personnel dossier for ${site.name} — platform engineering, certifications, and career history.`}>
+  <section class="border-b border-line py-16 md:py-20">
+    <div class="mx-auto max-w-6xl px-4 md:px-6">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="label mb-3">[ personnel file · RA-0001 ]</p>
+          <h1 class="font-display text-4xl font-bold tracking-tight text-bone sm:text-5xl">Curriculum Vitae</h1>
+        </div>
+        <a
+          href="/ramiro-alvarez-cv.pdf"
+          download="ramiro-alvarez-cv.pdf"
+          class="border border-accent bg-accent/10 px-5 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-accent hover:bg-accent hover:text-ink"
+        >
+          Download PDF ↓
+        </a>
+      </div>
+      <dl class="mt-8 grid gap-4 border border-line sm:grid-cols-2 lg:grid-cols-4">
+        <div class="border-b border-line p-4 sm:border-b-0 sm:border-r">
+          <dt class="label">Name</dt>
+          <dd class="mt-1 font-display text-lg font-semibold text-bone">{site.name}</dd>
+        </div>
+        <div class="border-b border-line p-4 sm:border-b-0 lg:border-r">
+          <dt class="label">Station</dt>
+          <dd class="mt-1 font-display text-lg font-semibold text-bone">{site.location}</dd>
+        </div>
+        <div class="border-b border-line p-4 sm:border-r lg:border-b-0">
+          <dt class="label">Assignment</dt>
+          <dd class="mt-1 font-display text-base font-semibold leading-snug text-bone">Staff Platform Engineer</dd>
+        </div>
+        <div class="p-4">
+          <dt class="label">Status</dt>
+          <dd class="mt-1 font-display text-lg font-semibold text-accent">Active · Ready</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="border-b border-line py-14">
+    <div class="mx-auto max-w-6xl px-4 md:px-6">
+      <p class="label mb-6">[ employment record ]</p>
+      <ul class="space-y-0 divide-y divide-line border border-line">
+        {experience.map((job) => (
+          <li class="grid gap-2 p-5 md:grid-cols-[200px_1fr]">
+            <p class="font-mono text-xs text-ash">{job.period}</p>
+            <div>
+              <h2 class="font-display text-xl font-semibold text-bone">
+                {job.role}
+                {job.current && (
+                  <span class="ml-2 align-middle font-mono text-[10px] uppercase tracking-[0.12em] text-accent">
+                    current
+                  </span>
+                )}
+              </h2>
+              <p class="mt-1">
+                {job.url ? (
+                  <a href={job.url} class="text-accent hover:underline" target="_blank" rel="noopener noreferrer">
+                    {job.org} ↗
+                  </a>
+                ) : (
+                  <span class="text-bone-dim">{job.org}</span>
+                )}
+              </p>
+              <p class="mt-2 text-sm text-ash">{job.summary}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="border-b border-line py-14">
+    <div class="mx-auto max-w-6xl px-4 md:px-6">
+      <p class="label mb-6">[ skill matrix ]</p>
+      <ul class="flex flex-wrap gap-2">
+        {skills.map((skill) => (
+          <li class="border border-line bg-surface-raised px-3 py-1.5 font-mono text-xs text-bone-dim">
+            {skill}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="border-b border-line py-14">
+    <div class="mx-auto max-w-6xl px-4 md:px-6">
+      <p class="label mb-3">[ credentials · highlights ]</p>
+      <h2 class="mb-6 font-display text-2xl font-bold text-bone">{site.claim}</h2>
+      <ul class="mb-10 grid gap-3 sm:grid-cols-2">
+        {highlightCerts.map((cert) => (
+          <li class="border border-accent/40 bg-accent/5 p-4">
+            <p class="font-display text-lg font-semibold text-bone">{cert.name}</p>
+            <p class="mt-1 font-mono text-[11px] uppercase tracking-[0.12em] text-ash">
+              {cert.issuer} · {cert.date}
+            </p>
+          </li>
+        ))}
+      </ul>
+
+      <details class="border border-line">
+        <summary class="cursor-pointer list-none px-5 py-4 font-mono text-xs uppercase tracking-[0.14em] text-ash hover:text-accent">
+          [ expand full certification archive · {certifications.length} records ]
+        </summary>
+        <ul class="divide-y divide-line border-t border-line">
+          {certifications.map((cert) => (
+            <li class="flex flex-wrap items-baseline justify-between gap-2 px-5 py-3">
+              <div>
+                {cert.url ? (
+                  <a href={cert.url} class="font-display text-bone hover:text-accent" target="_blank" rel="noopener noreferrer">
+                    {cert.name}
+                  </a>
+                ) : (
+                  <span class="font-display text-bone">{cert.name}</span>
+                )}
+                <p class="font-mono text-[10px] uppercase tracking-[0.12em] text-ash">
+                  {cert.issuer}
+                </p>
+              </div>
+              <span class="font-mono text-xs text-ash">{cert.date}</span>
+            </li>
+          ))}
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <section class="py-14">
+    <div class="mx-auto max-w-6xl px-4 md:px-6">
+      <p class="label mb-3">[ channels ]</p>
+      <div class="flex flex-wrap gap-4 font-mono text-sm">
+        <a href="/ramiro-alvarez-cv.pdf" download="ramiro-alvarez-cv.pdf" class="text-accent hover:underline">Download CV (PDF)</a>
+        <a href={socials.canispot} class="text-accent hover:underline" target="_blank" rel="noopener noreferrer">CanISpot.ai</a>
+        <a href={socials.minirss} class="text-accent hover:underline" target="_blank" rel="noopener noreferrer">MiniRSS.ai</a>
+        <a href={`mailto:${site.cvEmail}`} class="text-accent hover:underline">{site.cvEmail}</a>
+        <a href={socials.linkedin} class="text-accent hover:underline" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href={socials.github} class="text-accent hover:underline" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+  </section>
+</Layout>

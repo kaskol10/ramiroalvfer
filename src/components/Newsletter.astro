@@ -1,0 +1,103 @@
+---
+import { newsletter } from '../data/socials';
+
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? '';
+---
+
+{newsletter.enabled && (
+  <section class="border-b border-line bg-surface-raised/40 py-16">
+    <div class="mx-auto max-w-6xl px-4 md:px-6">
+      <div class="frame max-w-2xl border border-line bg-surface p-6 md:p-8">
+        <p class="label mb-3">[ broadcast channel ]</p>
+        <h2 class="font-display text-2xl font-bold text-bone">Get latest posts in your inbox</h2>
+        <p class="mt-2 text-sm text-ash">
+          Platform engineering, self-hosted AI, inference on Kubernetes — no spam.
+          Prefer feeds? Use <a href="/rss.xml" class="text-accent hover:underline">RSS</a>.
+        </p>
+        <form
+          id="broadcast-form"
+          class="mt-6 flex flex-col gap-3"
+          data-endpoint={newsletter.endpoint}
+        >
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <input
+              type="email"
+              name="email"
+              required
+              autocomplete="email"
+              placeholder="you@company.com"
+              class="flex-1 border border-line bg-surface-raised px-4 py-2.5 font-mono text-sm text-bone placeholder:text-ash-dim focus:border-accent focus:outline-none"
+            />
+            <button
+              type="submit"
+              class="border border-accent bg-accent/10 px-5 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-accent hover:bg-accent hover:text-ink disabled:opacity-50"
+            >
+              Subscribe
+            </button>
+          </div>
+          {turnstileSiteKey && (
+            <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-theme="dark" data-size="normal"></div>
+          )}
+          <p id="broadcast-status" class="min-h-[1.25rem] font-mono text-xs text-ash" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+)}
+
+{turnstileSiteKey && (
+  <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+)}
+
+<script is:inline>
+  (() => {
+    const form = document.getElementById('broadcast-form');
+    const statusEl = document.getElementById('broadcast-status');
+    if (!form || !statusEl) return;
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const endpoint = form.getAttribute('data-endpoint') || '/api/subscribe';
+      const emailInput = form.querySelector('input[name="email"]');
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const email = emailInput && 'value' in emailInput ? String(emailInput.value).trim() : '';
+      const turnstileInput = form.querySelector('input[name="cf-turnstile-response"]');
+      const turnstileToken =
+        turnstileInput && 'value' in turnstileInput ? String(turnstileInput.value) : '';
+
+      statusEl.textContent = 'Sending…';
+      statusEl.className = 'min-h-[1.25rem] font-mono text-xs text-ash';
+      if (submitBtn) submitBtn.disabled = true;
+
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({
+            email,
+            turnstileToken,
+            source: window.location.pathname,
+          }),
+        });
+        const data = await res.json();
+
+        if (!res.ok || !data.ok) {
+          statusEl.textContent = data.error || 'Subscription failed.';
+          statusEl.className = 'min-h-[1.25rem] font-mono text-xs text-red-400';
+          return;
+        }
+
+        statusEl.textContent = data.message || 'Subscribed.';
+        statusEl.className = 'min-h-[1.25rem] font-mono text-xs text-accent';
+        form.reset();
+        if (typeof turnstile !== 'undefined') turnstile.reset();
+      } catch (err) {
+        statusEl.textContent = 'Network error — try again or use RSS.';
+        statusEl.className = 'min-h-[1.25rem] font-mono text-xs text-red-400';
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+      }
+    });
+  })();
+</script>

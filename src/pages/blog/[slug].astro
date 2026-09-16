@@ -1,0 +1,130 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { coverUrl, formatDate } from '../../lib/utils';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const cover = coverUrl(post.data.cover);
+---
+
+<Layout title={post.data.title} description={post.data.description} image={cover ?? undefined}>
+  <article>
+    <header class="border-b border-line py-14 md:py-20">
+      <div class="mx-auto max-w-3xl px-4 md:px-6">
+        <p class="label mb-4">
+          [ field note ] · {formatDate(post.data.date)}
+        </p>
+        <h1 class="font-display text-4xl font-bold leading-tight tracking-tight text-bone sm:text-5xl">
+          {post.data.title}
+        </h1>
+        <p class="mt-4 text-lg text-ash">{post.data.description}</p>
+        {post.data.tags?.length > 0 && (
+          <ul class="mt-6 flex flex-wrap gap-2">
+            {post.data.tags.map((tag) => (
+              <li class="border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.1em] text-ash">
+                {tag}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </header>
+
+    {cover && (
+      <div class="mx-auto max-w-4xl px-4 pt-10 md:px-6">
+        <img src={cover} alt="" class="w-full border border-line object-cover" />
+      </div>
+    )}
+
+    <div class="prose-cockpit mx-auto max-w-3xl px-4 py-12 md:px-6">
+      <Content />
+    </div>
+  </article>
+</Layout>
+
+<style is:global>
+  .prose-cockpit {
+    color: var(--color-bone-dim);
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+  .prose-cockpit h2,
+  .prose-cockpit h3,
+  .prose-cockpit h4 {
+    color: var(--color-bone);
+    font-family: var(--font-display);
+    font-weight: 700;
+    margin-top: 2.2em;
+    margin-bottom: 0.6em;
+    letter-spacing: -0.02em;
+  }
+  .prose-cockpit h2 { font-size: 1.65rem; }
+  .prose-cockpit h3 { font-size: 1.3rem; }
+  .prose-cockpit p { margin: 1.1em 0; }
+  .prose-cockpit a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .prose-cockpit ul,
+  .prose-cockpit ol {
+    margin: 1em 0;
+    padding-left: 1.4em;
+  }
+  .prose-cockpit li { margin: 0.35em 0; }
+  .prose-cockpit blockquote {
+    border-left: 2px solid var(--color-accent);
+    margin: 1.5em 0;
+    padding-left: 1em;
+    color: var(--color-ash);
+  }
+  .prose-cockpit pre {
+    background: var(--color-surface-raised);
+    border: 1px solid var(--color-line);
+    padding: 1rem;
+    overflow-x: auto;
+    margin: 1.5em 0;
+    font-size: 0.85rem;
+  }
+  .prose-cockpit code {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+  }
+  .prose-cockpit :not(pre) > code {
+    background: var(--color-surface-light);
+    border: 1px solid var(--color-line);
+    padding: 0.1em 0.35em;
+    color: var(--color-accent);
+  }
+  .prose-cockpit img {
+    max-width: 100%;
+    border: 1px solid var(--color-line);
+    margin: 1.5em 0;
+  }
+  .prose-cockpit hr {
+    border: none;
+    border-top: 1px solid var(--color-line);
+    margin: 2.5em 0;
+  }
+  .prose-cockpit table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+    font-size: 0.9rem;
+  }
+  .prose-cockpit th,
+  .prose-cockpit td {
+    border: 1px solid var(--color-line);
+    padding: 0.5em 0.75em;
+    text-align: left;
+  }
+</style>

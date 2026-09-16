@@ -1,0 +1,127 @@
+---
+import '../styles/global.css';
+import { site, socials } from '../data/socials';
+
+type Props = {
+  title?: string;
+  description?: string;
+  image?: string;
+};
+
+const { title, description = site.description, image = site.portrait } = Astro.props;
+const pageTitle = title ? `${title} · ${site.name}` : `${site.name} · ${site.persona}`;
+const canonical = new URL(Astro.url.pathname, site.url).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" type="application/rss+xml" title={`${site.name} RSS`} href="/rss.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(image, site.url).href} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <link rel="icon" type="image/png" href="/images/logo-200.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=Syne:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="min-h-screen">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-accent focus:px-3 focus:py-2 focus:text-ink"
+    >
+      Skip to content
+    </a>
+    <header class="sticky top-0 z-40 border-b border-line/80 bg-surface/90 backdrop-blur-md">
+      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 md:px-6">
+        <a href="/" class="group flex items-center gap-3">
+          <span class="font-display text-lg font-bold tracking-tight text-bone group-hover:text-accent">
+            {site.name}
+          </span>
+          <span class="hidden font-mono text-[10px] uppercase tracking-[0.16em] text-ash sm:inline">
+            [ {site.persona} ]
+          </span>
+        </a>
+        <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">
+          <a href="/#projects" class="label hover:text-accent">Projects</a>
+          <a href="/blog" class="label hover:text-accent">Writing</a>
+          <a href="/speaking" class="label hover:text-accent">Speaking</a>
+          <a href="/cv" class="label hover:text-accent">CV</a>
+          <a href="/feed" class="label hover:text-accent">Feed</a>
+          <a
+            href={socials.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="border border-line px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.12em] text-bone hover:border-accent hover:text-accent"
+          >
+            GitHub ↗
+          </a>
+        </nav>
+        <details class="relative md:hidden">
+          <summary class="cursor-pointer list-none border border-line px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.12em] text-bone">
+            [ menu ]
+          </summary>
+          <div class="absolute right-0 mt-2 w-48 border border-line bg-surface-raised p-3 shadow-lg">
+            <div class="flex flex-col gap-3">
+              <a href="/#projects" class="label hover:text-accent">Projects</a>
+              <a href="/blog" class="label hover:text-accent">Writing</a>
+              <a href="/speaking" class="label hover:text-accent">Speaking</a>
+              <a href="/cv" class="label hover:text-accent">CV</a>
+              <a href="/feed" class="label hover:text-accent">Feed</a>
+              <a href={socials.github} class="label hover:text-accent" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            </div>
+          </div>
+        </details>
+      </div>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="mt-24 border-t border-line">
+      <div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-12 md:flex-row md:items-end md:justify-between md:px-6">
+        <div>
+          <p class="label mb-2">[ contact ]</p>
+          <p class="font-display text-2xl font-semibold text-bone">{site.name}</p>
+          <p class="mt-1 max-w-md text-sm text-ash">{site.title}</p>
+          <p class="mt-1 font-mono text-xs text-ash">{site.location}</p>
+        </div>
+        <div class="flex flex-wrap gap-4 font-mono text-xs uppercase tracking-[0.12em]">
+          <a href={`mailto:${site.email}`} class="text-bone-dim hover:text-accent">{site.email}</a>
+          <a href={socials.canispot} class="text-bone-dim hover:text-accent" target="_blank" rel="noopener noreferrer">CanISpot.ai</a>
+          <a href={socials.minirss} class="text-bone-dim hover:text-accent" target="_blank" rel="noopener noreferrer">MiniRSS.ai</a>
+          <a href={socials.github} class="text-bone-dim hover:text-accent" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href={socials.linkedin} class="text-bone-dim hover:text-accent" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="/rss.xml" class="text-bone-dim hover:text-accent">RSS</a>
+        </div>
+      </div>
+      <div class="border-t border-line/60 py-4 text-center font-mono text-[10px] uppercase tracking-[0.14em] text-ash-dim">
+        © {new Date().getFullYear()} · {site.persona} · Powered by Astro
+      </div>
+    </footer>
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) entry.target.classList.add('is-visible');
+          }
+        },
+        { threshold: 0.12 },
+      );
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>

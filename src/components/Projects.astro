@@ -1,0 +1,120 @@
+---
+import type { Project } from '../data/projects';
+import { flagshipProjects, supportingProjects } from '../data/projects';
+
+const langColor: Record<string, string> = {
+  Go: '#00ADD8',
+  TypeScript: '#3178C6',
+  Markdown: '#083fa1',
+  Product: '#2dd4bf',
+};
+
+const themeLabel: Record<string, string> = {
+  ai: 'self-hosted AI',
+  platform: 'platform',
+  data: 'data',
+  finops: 'finops',
+};
+
+function metaLabel(project: Project): string {
+  if (project.kind === 'product') return 'product · live';
+  return `${project.role} · ${project.language}`;
+}
+
+function scoreLabel(project: Project): string {
+  if (project.kind === 'product') return 'live';
+  return `${project.stars ?? 0} ★`;
+}
+---
+
+<section id="projects" class="scroll-mt-20 border-b border-line py-20 md:py-28">
+  <div class="mx-auto max-w-6xl px-4 md:px-6">
+    <div class="mb-10 flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <p class="label mb-3">[ cluster status · primary proof ]</p>
+        <h2 class="font-display text-3xl font-bold tracking-tight text-bone sm:text-4xl">
+          Products & open source I ship
+        </h2>
+        <p class="mt-3 max-w-2xl text-sm text-ash sm:text-base">
+          Projects lead this site — products like CanISpot.ai and MiniRSS.ai, plus platform tooling and self-hosted AI. OSS star counts refresh when the site builds.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {flagshipProjects.map((project: Project, index) => (
+        <a
+          href={project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class:list={[
+            'reveal frame group border p-6 hover:border-accent',
+            project.kind === 'product'
+              ? 'border-accent/50 bg-accent/5 md:col-span-2 lg:col-span-1'
+              : 'border-line bg-surface-raised',
+          ]}
+          style={`transition-delay: ${index * 80}ms`}
+        >
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <p class="label text-accent">
+                {metaLabel(project)}
+                {project.themes?.includes('ai') && <> · inference</>}
+                {project.themes?.includes('finops') && project.kind === 'product' && <> · finops</>}
+              </p>
+              <h3 class="mt-2 font-display text-2xl font-semibold text-bone group-hover:text-accent">
+                {project.name}
+              </h3>
+            </div>
+            <span class="font-mono text-sm uppercase tracking-[0.08em] text-ash">{scoreLabel(project)}</span>
+          </div>
+          <p class="mt-4 text-sm leading-relaxed text-ash">{project.description}</p>
+          {project.themes && project.themes.length > 0 && (
+            <ul class="mt-4 flex flex-wrap gap-2">
+              {project.themes.map((theme) => (
+                <li class="border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.1em] text-ash">
+                  {themeLabel[theme] ?? theme}
+                </li>
+              ))}
+            </ul>
+          )}
+          <p class="mt-6 font-mono text-[11px] uppercase tracking-[0.12em] text-bone-dim group-hover:text-accent">
+            {project.kind === 'product' ? 'try it ↗' : 'open ↗'}
+          </p>
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {supportingProjects.map((project: Project, index) => (
+        <a
+          href={project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class:list={[
+            'reveal group border p-5 hover:border-accent hover:bg-surface-raised',
+            project.themes?.includes('ai')
+              ? 'border-accent/35 bg-accent/5'
+              : 'border-line bg-surface',
+          ]}
+          style={`transition-delay: ${(index + 2) * 70}ms`}
+        >
+          <div class="flex items-center justify-between gap-2">
+            <span class="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.12em] text-ash">
+              <span
+                class="inline-block h-2 w-2 rounded-full"
+                style={`background:${langColor[project.language] ?? '#2dd4bf'}`}
+              ></span>
+              {project.themes?.includes('ai') ? 'self-hosted AI' : project.language}
+            </span>
+            <span class="font-mono text-xs text-ash">{scoreLabel(project)}</span>
+          </div>
+          <h3 class="mt-3 font-display text-lg font-semibold text-bone group-hover:text-accent">
+            {project.name}
+          </h3>
+          <p class="mt-2 text-sm leading-relaxed text-ash">{project.description}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
