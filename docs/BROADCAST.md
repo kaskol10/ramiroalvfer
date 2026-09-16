@@ -15,13 +15,15 @@ Also: `GET /api/unsubscribe?email=…` and site `/rss.xml` as a non-email altern
 
 ## One-time setup
 
-### 1. D1 database
+### 1. D1 database (do this before enabling the subscribe binding)
 
 ```bash
 npx wrangler d1 create k8scockpit-broadcast
 ```
 
-Paste the returned `database_id` into [`wrangler.toml`](wrangler.toml).
+Uncomment `[[d1_databases]]` in [`wrangler.toml`](../wrangler.toml) and paste the returned `database_id`.
+
+Until that UUID is real, keep the D1 block **commented out** — a placeholder like `REPLACE_WITH_D1_DATABASE_ID` makes `wrangler pages deploy` fail with error 8000022.
 
 Apply migrations (remote = production):
 
