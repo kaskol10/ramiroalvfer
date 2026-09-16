@@ -9,6 +9,7 @@
    - Build command: `npm run build`
    - Output directory: `dist`
    - Node version: `22` (or set `NODE_VERSION=22` env)
+   - **Deploy command: leave empty** (Pages publishes `dist` automatically). Do **not** set `npx wrangler deploy` — that is for Workers and will fail. If you must set one, use `npx wrangler pages deploy dist --project-name=<your-pages-project>`.
 4. Attach custom domain `k8scockpit.tech` (and `www` if used).
 5. Confirm `public/_redirects` is published (legacy `/archives`, `/portfolio`, `/contact`, and per-post slugs).
 
