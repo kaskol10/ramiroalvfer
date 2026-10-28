@@ -8,6 +8,13 @@ export type Talk = {
 
 export const talks: Talk[] = [
   {
+    title: 'Agentic AI for Platform Engineering: Building Agent-Ready Platforms',
+    event: 'Packt Publishing (workshop)',
+    date: '2026-10-27',
+    url: 'https://www.eventbrite.co.uk/e/agentic-ai-for-platform-engineering-building-agent-ready-platforms-tickets-2003193305100?aff=RAMIRO40',
+    session: 'SX 13',
+  },
+  {
     title: 'From Ops to DevOps to Platform Engineering',
     event: 'Asturias Software Crafters',
     date: '2024-11',
