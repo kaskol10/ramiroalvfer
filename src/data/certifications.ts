@@ -8,6 +8,12 @@ export type Certification = {
 
 export const certifications: Certification[] = [
   {
+    name: 'NVIDIA-Certified Associate: AI Infrastructure and Operations',
+    issuer: 'NVIDIA',
+    date: '2026-11-22',
+    url: '/images/certs/NVIDIA-NCA-AIIO.pdf',
+  },
+  {
     name: 'AWS Certified Generative AI Developer — Professional',
     issuer: 'AWS',
     date: '2026-01-04',
