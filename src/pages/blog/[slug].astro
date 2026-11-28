@@ -1,33 +1,84 @@
 ---
 import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
-import { coverUrl, formatDate } from '../../lib/utils';
+import Newsletter from '../../components/Newsletter.astro';
+import PostList from '../../components/PostList.astro';
+import { site } from '../../data/socials';
+import { coverUrl, formatDate, readingMinutes } from '../../lib/utils';
+import { relatedTo } from '../../lib/posts';
+
+type Post = CollectionEntry<'posts'>;
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts');
-  return posts.map((post) => ({
+  const posts = (await getCollection('posts')).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+  );
+  return posts.map((post, index) => ({
     params: { slug: post.id },
-    props: { post },
+    props: {
+      post,
+      newer: posts[index - 1],
+      older: posts[index + 1],
+      related: relatedTo(post, posts),
+    },
   }));
 }
 
-const { post } = Astro.props;
+type Props = { post: Post; newer?: Post; older?: Post; related: Post[] };
+
+const { post, newer, older, related } = Astro.props;
 const { Content } = await render(post);
 const cover = coverUrl(post.data.cover);
+const minutes = readingMinutes(post.body ?? '');
+const url = new URL(`/blog/${post.id}`, site.url).href;
+const shareImage = `/og/${post.id}.png`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.date.toISOString(),
+  url,
+  mainEntityOfPage: url,
+  image: new URL(shareImage, site.url).href,
+  keywords: post.data.tags.join(', '),
+  author: { '@id': `${site.url}/#person` },
+  publisher: { '@id': `${site.url}/#person` },
+};
 ---
 
-<Layout title={post.data.title} description={post.data.description} image={cover ?? undefined}>
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  image={shareImage}
+  article={{ publishedTime: post.data.date, tags: post.data.tags }}
+  jsonLd={jsonLd}
+>
   <article>
     <header class="border-b border-line py-14 md:py-20">
       <div class="mx-auto max-w-3xl px-4 md:px-6">
         <p class="label mb-4">
-          [ field note ] · {formatDate(post.data.date)}
+          [ field note ] · <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time> · {minutes} min read
         </p>
         <h1 class="font-display text-4xl font-bold leading-tight tracking-tight text-bone sm:text-5xl">
           {post.data.title}
         </h1>
         <p class="mt-4 text-lg text-ash">{post.data.description}</p>
-        {post.data.tags?.length > 0 && (
+        <p class="mt-6 flex items-center gap-3 text-sm text-bone-dim">
+          <img
+            src={site.portrait}
+            alt=""
+            width="32"
+            height="32"
+            class="h-8 w-8 rounded-full border border-line object-cover grayscale"
+          />
+          <span>
+            By <a href="/cv" class="text-bone hover:text-accent">{site.name}</a>, Staff Platform Engineer
+          </span>
+        </p>
+        {post.data.tags.length > 0 && (
           <ul class="mt-6 flex flex-wrap gap-2">
             {post.data.tags.map((tag) => (
               <li class="border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.1em] text-ash">
@@ -49,6 +100,37 @@ const cover = coverUrl(post.data.cover);
       <Content />
     </div>
   </article>
+
+  <Newsletter />
+
+  {related.length > 0 && (
+    <section class="border-b border-line py-14">
+      <div class="mx-auto max-w-3xl px-4 md:px-6">
+        <p class="label mb-3">[ related ]</p>
+        <h2 class="mb-6 font-display text-2xl font-bold text-bone">Keep reading</h2>
+        <PostList posts={related} />
+      </div>
+    </section>
+  )}
+
+  <nav class="py-10" aria-label="Posts">
+    <div class="mx-auto grid max-w-3xl gap-4 px-4 sm:grid-cols-2 md:px-6">
+      {older ? (
+        <a href={`/blog/${older.id}`} class="group border border-line p-4 hover:border-accent">
+          <p class="label">◂ older</p>
+          <p class="mt-1 font-display font-semibold text-bone group-hover:text-accent">{older.data.title}</p>
+        </a>
+      ) : (
+        <span></span>
+      )}
+      {newer && (
+        <a href={`/blog/${newer.id}`} class="group border border-line p-4 text-right hover:border-accent">
+          <p class="label">newer ▸</p>
+          <p class="mt-1 font-display font-semibold text-bone group-hover:text-accent">{newer.data.title}</p>
+        </a>
+      )}
+    </div>
+  </nav>
 </Layout>
 
 <style is:global>

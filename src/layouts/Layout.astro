@@ -1,14 +1,38 @@
 ---
+import '@fontsource/syne/latin-600.css';
+import '@fontsource/syne/latin-700.css';
+import '@fontsource/ibm-plex-sans/latin-400.css';
+import '@fontsource/ibm-plex-sans/latin-400-italic.css';
+import '@fontsource/ibm-plex-sans/latin-600.css';
+import '@fontsource/ibm-plex-mono/latin-400.css';
+import '@fontsource/ibm-plex-mono/latin-500.css';
 import '../styles/global.css';
 import { site, socials } from '../data/socials';
 
 type Props = {
   title?: string;
   description?: string;
+  /** Share image path; defaults to the generated site card. */
   image?: string;
+  /** Set for blog posts: switches Open Graph to `article` and adds the publish date. */
+  article?: { publishedTime: Date; tags?: string[] };
+  /** Extra schema.org object for this page (the site-wide Person is always included). */
+  jsonLd?: Record<string, unknown>;
 };
 
-const { title, description = site.description, image = site.portrait } = Astro.props;
+const { title, description = site.description, image = '/og/default.png', article, jsonLd } = Astro.props;
+
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${site.url}/#person`,
+  name: site.name,
+  url: site.url,
+  image: new URL(site.portrait, site.url).href,
+  jobTitle: 'Staff Platform Engineer',
+  description: site.description,
+  sameAs: [socials.github, socials.linkedin, socials.x],
+};
 const pageTitle = title ? `${title} · ${site.name}` : `${site.name} · ${site.persona}`;
 const canonical = new URL(Astro.url.pathname, site.url).href;
 ---
@@ -23,11 +47,18 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="alternate" type="application/rss+xml" title={`${site.name} RSS`} href="/rss.xml" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    <meta property="og:site_name" content={`${site.name} · ${site.persona}`} />
+    {article && <meta property="article:published_time" content={article.publishedTime.toISOString()} />}
+    {article && <meta property="article:author" content={site.name} />}
+    {article?.tags?.map((tag) => <meta property="article:tag" content={tag} />)}
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={new URL(image, site.url).href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:image" content={new URL(image, site.url).href} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
@@ -37,12 +68,8 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
     <script is:inline>
       document.documentElement.classList.add('js');
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=Syne:wght@500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(person)} />
+    {jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body class="min-h-screen">
     <a

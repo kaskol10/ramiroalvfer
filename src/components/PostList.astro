@@ -1,0 +1,19 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatDate } from '../lib/utils';
+
+type Props = { posts: CollectionEntry<'posts'>[] };
+const { posts } = Astro.props;
+---
+
+<ul class="divide-y divide-line border border-line">
+  {posts.map((post) => (
+    <li>
+      <a href={`/blog/${post.id}`} class="block px-4 py-4 hover:bg-surface-raised">
+        <p class="font-mono text-[10px] uppercase tracking-[0.12em] text-ash">{formatDate(post.data.date)}</p>
+        <p class="mt-1 font-display text-base font-semibold text-bone">{post.data.title}</p>
+        <p class="mt-1 line-clamp-2 text-sm text-ash">{post.data.description}</p>
+      </a>
+    </li>
+  ))}
+</ul>
