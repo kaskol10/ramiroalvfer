@@ -20,8 +20,10 @@
 }
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 
   body {
@@ -76,7 +78,8 @@
     @apply font-mono text-[10px] uppercase tracking-[0.14em] text-ash;
   }
 
-  .reveal {
+  /* Only hide content when JS is running, so a script failure never leaves blank sections. */
+  .js .reveal {
     opacity: 0;
     transform: translateY(14px);
     transition:
@@ -84,8 +87,16 @@
       transform 0.55s ease;
   }
 
-  .reveal.is-visible {
+  .js .reveal.is-visible {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .js .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
   }
 }

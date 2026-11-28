@@ -31,7 +31,12 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:site" content={socials.xHandle} />
+    <meta name="twitter:creator" content={socials.xHandle} />
     <link rel="icon" type="image/png" href="/images/logo-200.png" />
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -105,10 +110,11 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
           <a href={socials.minirss} class="text-bone-dim hover:text-accent" target="_blank" rel="noopener noreferrer">MiniRSS.ai</a>
           <a href={socials.github} class="text-bone-dim hover:text-accent" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a href={socials.linkedin} class="text-bone-dim hover:text-accent" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href={socials.x} class="text-bone-dim hover:text-accent" target="_blank" rel="me noopener noreferrer">X</a>
           <a href="/rss.xml" class="text-bone-dim hover:text-accent">RSS</a>
         </div>
       </div>
-      <div class="border-t border-line/60 py-4 text-center font-mono text-[10px] uppercase tracking-[0.14em] text-ash-dim">
+      <div class="border-t border-line/60 py-4 text-center font-mono text-[10px] uppercase tracking-[0.14em] text-ash">
         © {new Date().getFullYear()} · {site.persona} · Powered by Astro
       </div>
     </footer>

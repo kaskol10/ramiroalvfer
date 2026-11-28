@@ -89,7 +89,8 @@ const aiProjects = projects.filter((p) => p.themes?.includes('ai')).length;
   ];
   const el = document.getElementById('hero-rotate');
   let i = 0;
-  if (el) {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (el && !reduceMotion) {
     setInterval(() => {
       i = (i + 1) % phrases.length;
       el.style.opacity = '0';
