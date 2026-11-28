@@ -64,13 +64,13 @@ Some optional tags:
 
 ## Mandatory Tags for Cloud Resources 
 
-![Mandatory Tags for Cloud Resources](/images/posts/mandatory-tags.webp) 
+![Mandatory Tags for Cloud Resources](../../src/assets/images/posts/mandatory-tags.webp) 
 
 Upper camel case (initial uppercase letter) validation.
 
 ## Optional Tags for Cloud Resources 
 
-![Optional Tags for Cloud Resources](/images/posts/optional-tags.webp) 
+![Optional Tags for Cloud Resources](../../src/assets/images/posts/optional-tags.webp) 
 
 Upper camel case (initial uppercase letter) validation.
 
@@ -78,7 +78,7 @@ Upper camel case (initial uppercase letter) validation.
 
 Kubernetes resources should be tagged properly too. In this case, Kubernetes labels will be used instead of tags.
 
-![Mandatory Tags for Kubernetes Resources](/images/posts/mandatory-tags-k8s.webp) 
+![Mandatory Tags for Kubernetes Resources](../../src/assets/images/posts/mandatory-tags-k8s.webp) 
 
 Valid label values:
 - must be 63 characters or less (can be empty),
@@ -95,8 +95,8 @@ In the next diagram, we can review the flow to maintain a strong tag allocation 
 
 ## Flowchart
 
-![Flowchart](/images/posts/flowchart.webp)
-![Generic Pipeline](/images/posts/generic-pipeline.webp)
+![Flowchart](../../src/assets/images/posts/flowchart.webp)
+![Generic Pipeline](../../src/assets/images/posts/generic-pipeline.webp)
 
 ## To sum up
 

@@ -6,6 +6,8 @@ import '@fontsource/ibm-plex-sans/latin-400-italic.css';
 import '@fontsource/ibm-plex-sans/latin-600.css';
 import '@fontsource/ibm-plex-mono/latin-400.css';
 import '@fontsource/ibm-plex-mono/latin-500.css';
+import { getImage } from 'astro:assets';
+import portrait from '../assets/images/portrait.jpeg';
 import '../styles/global.css';
 import { site, socials } from '../data/socials';
 
@@ -22,19 +24,31 @@ type Props = {
 
 const { title, description = site.description, image = '/og/default.png', article, jsonLd } = Astro.props;
 
+const personImage = await getImage({ src: portrait, width: 600, format: 'jpeg' });
+
 const person = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   '@id': `${site.url}/#person`,
   name: site.name,
   url: site.url,
-  image: new URL(site.portrait, site.url).href,
+  image: new URL(personImage.src, site.url).href,
   jobTitle: 'Staff Platform Engineer',
   description: site.description,
   sameAs: [socials.github, socials.linkedin, socials.x],
 };
 const pageTitle = title ? `${title} · ${site.name}` : `${site.name} · ${site.persona}`;
 const canonical = new URL(Astro.url.pathname, site.url).href;
+
+const navLinks = [
+  { href: '/#projects', label: 'Projects' },
+  { href: '/blog', label: 'Writing' },
+  { href: '/speaking', label: 'Speaking' },
+  { href: '/cv', label: 'CV' },
+  { href: '/log', label: 'Log' },
+];
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (href: string) => !href.includes('#') && (path === href || path.startsWith(`${href}/`));
 ---
 
 <!doctype html>
@@ -89,11 +103,15 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
           </span>
         </a>
         <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">
-          <a href="/#projects" class="label hover:text-accent">Projects</a>
-          <a href="/blog" class="label hover:text-accent">Writing</a>
-          <a href="/speaking" class="label hover:text-accent">Speaking</a>
-          <a href="/cv" class="label hover:text-accent">CV</a>
-          <a href="/feed" class="label hover:text-accent">Feed</a>
+          {navLinks.map((link) => (
+            <a
+              href={link.href}
+              aria-current={isCurrent(link.href) ? 'page' : undefined}
+              class:list={['label hover:text-accent', isCurrent(link.href) && 'text-accent']}
+            >
+              {link.label}
+            </a>
+          ))}
           <a
             href={socials.github}
             target="_blank"
@@ -103,17 +121,21 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
             GitHub ↗
           </a>
         </nav>
-        <details class="relative md:hidden">
+        <details id="mobile-menu" class="relative md:hidden">
           <summary class="cursor-pointer list-none border border-line px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.12em] text-bone">
             [ menu ]
           </summary>
           <div class="absolute right-0 mt-2 w-48 border border-line bg-surface-raised p-3 shadow-lg">
             <div class="flex flex-col gap-3">
-              <a href="/#projects" class="label hover:text-accent">Projects</a>
-              <a href="/blog" class="label hover:text-accent">Writing</a>
-              <a href="/speaking" class="label hover:text-accent">Speaking</a>
-              <a href="/cv" class="label hover:text-accent">CV</a>
-              <a href="/feed" class="label hover:text-accent">Feed</a>
+              {navLinks.map((link) => (
+                <a
+                  href={link.href}
+                  aria-current={isCurrent(link.href) ? 'page' : undefined}
+                  class:list={['label hover:text-accent', isCurrent(link.href) && 'text-accent']}
+                >
+                  {link.label}
+                </a>
+              ))}
               <a href={socials.github} class="label hover:text-accent" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
             </div>
           </div>
@@ -155,6 +177,19 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
         { threshold: 0.12 },
       );
       document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+      // Close the mobile menu on outside click, Escape, or after following a link.
+      const menu = document.getElementById('mobile-menu');
+      if (menu instanceof HTMLDetailsElement) {
+        document.addEventListener('click', (event) => {
+          const target = event.target;
+          if (!(target instanceof Node)) return;
+          if (!menu.contains(target) || (target instanceof Element && target.closest('a'))) menu.open = false;
+        });
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') menu.open = false;
+        });
+      }
     </script>
   </body>
 </html>

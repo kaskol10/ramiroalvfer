@@ -43,16 +43,16 @@ You can find the Grafana Dashboard [Underutilization of Allocated Resources dash
 ### Dashboard Examples
 
 #### 1. Cluster Overview
-![Cluster Resource Usage](/images/posts/cluster-unused.png)
+![Cluster Resource Usage](../../src/assets/images/posts/cluster-unused.png)
 
 #### 2. Storage Utilization
-![PVC Usage](/images/posts/pvc-unused.png)
+![PVC Usage](../../src/assets/images/posts/pvc-unused.png)
 
 #### 3. Namespace Analysis
-![Namespace Metrics](/images/posts/ns-qos.png)
+![Namespace Metrics](../../src/assets/images/posts/ns-qos.png)
 
 #### 4. Workload Details
-![Workload Metrics](/images/posts/workloads-unused.png)
+![Workload Metrics](../../src/assets/images/posts/workloads-unused.png)
 
 ## Usage Reduction
 

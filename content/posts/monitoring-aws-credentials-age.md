@@ -20,7 +20,7 @@ cover: "covers/aws_monitoring_1.webp"
 
 > This article was originally published on [Medium - Empathy.co](https://medium.com/empathyco/how-to-monitor-the-age-of-your-aws-credentials-using-terraform-go-aws-lambda-and-slack-a9cc0ad322a)
 
-![AWS Credentials Monitoring Architecture](/images/posts/aws_monitoring_3.webp)
+![AWS Credentials Monitoring Architecture](../../src/assets/images/posts/aws_monitoring_3.webp)
 
 As a Platform Engineer Architect and AWS certified professional, I've implemented numerous security automation solutions. One crucial aspect of cloud security is managing AWS credential lifecycles. In this post, I'll share a practical solution for monitoring AWS credential age using modern cloud-native technologies.
 
@@ -108,7 +108,7 @@ func main() {
 
 ### Terraform Infrastructure
 
-![WildTerraform](/images/posts/aws_monitoring_2.bin)
+![WildTerraform](../../src/assets/images/posts/aws_monitoring_2.gif)
 
 ```hcl
 resource "aws_lambda_function" "credential_monitor" {
@@ -139,7 +139,7 @@ resource "aws_cloudwatch_event_target" "check_credentials_target" {
 }
 ```
 
-![Terraform live and modules](/images/posts/aws_monitoring_3.webp)
+![Terraform live and modules](../../src/assets/images/posts/aws_monitoring_3.webp)
 
 ## Monitoring Setup
 
@@ -157,7 +157,7 @@ func notifySlack(username string, keyID string, age time.Duration) error {
     return nil
 }
 ```
-![Slack messages](/images/posts/aws_monitoring_6.webp)
+![Slack messages](../../src/assets/images/posts/aws_monitoring_6.webp)
 
 ## Best Practices and Lessons Learned
 
@@ -180,9 +180,9 @@ func notifySlack(username string, keyID string, age time.Duration) error {
 
 This solution has been running in production environments, helping teams maintain better security practices through automation. The complete code is available on my [GitHub repository](https://github.com/EmpathyBroker/aws-credentials-monitoring).
 
-![Demogorgon user specs](/images/posts/aws_monitoring_5.webp)
+![Demogorgon user specs](../../src/assets/images/posts/aws_monitoring_5.webp)
 
-![AWS Vault workflow](/images/posts/aws_monitoring_7.webp)
+![AWS Vault workflow](../../src/assets/images/posts/aws_monitoring_7.webp)
 
 ### Next Steps
 

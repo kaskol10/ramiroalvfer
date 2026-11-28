@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import portrait from '../assets/images/portrait.jpeg';
 import { site, socials } from '../data/socials';
 import { productProjects } from '../data/projects';
 import { certifications } from '../data/certifications';
@@ -58,12 +60,14 @@ import { talks } from '../data/talks';
     </div>
     <div class="relative z-10 hidden justify-self-end md:block">
       <div class="frame border border-line bg-surface-raised p-2">
-        <img
-          src={site.portrait}
+        <Image
+          src={portrait}
           alt={`${site.name} speaking at KCD Spain`}
           class="h-[340px] w-[280px] object-cover grayscale contrast-110"
-          width="280"
-          height="340"
+          width={560}
+          height={680}
+          fit="cover"
+          loading="eager"
         />
         <p class="mt-2 px-1 font-mono text-[10px] uppercase tracking-[0.14em] text-ash">
           {site.location}

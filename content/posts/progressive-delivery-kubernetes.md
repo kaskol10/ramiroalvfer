@@ -95,13 +95,13 @@ The main benefits would be:
 
 It has both the new and old version of the application deployed at the same time. During this time, only the old version of the application will receive production traffic. This allows the developers to run tests against the new version before switching the live traffic to the new version.
 
-![Blue/Green](/images/posts/blue-green.png)
+![Blue/Green](../../src/assets/images/posts/blue-green.png)
 
 - **Canary**
 
 A Canary deployment exposes a subset of users to the new version of the application while serving the rest of the traffic to the old version. Once the new version is verified as being correct, it can gradually replace the old version. Ingress controllers and service meshes, such as NGINX and Istio, enable more sophisticated traffic shaping patterns for canarying than what is natively available (e.g. achieving very fine-grained traffic splitting, or splitting based on HTTP headers).
 
-![Canary](/images/posts/canary.png)
+![Canary](../../src/assets/images/posts/canary.png)
 
 The picture above shows a Canary with two stages (25% and 75% of traffic goes to the new version), but this is just an example. Argo Rollouts allow multiple stages and percentages of traffic to be defined for each use case.
 

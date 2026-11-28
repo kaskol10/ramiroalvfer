@@ -190,12 +190,12 @@ That's it! The application runs entirely on your infrastructure, with Ollama pro
 
 Here's what the app looks like in action:
 
-![Short Summary](/images/posts/rss/short-summary.png)
-![White Short Summary](/images/posts/rss/white-short-summary.png)
-![Article](/images/posts/rss/article.png)
-![Extended Technical Summary](/images/posts/rss/extended-technical-summary.png)
-![Extended Business Summary](/images/posts/rss/extended-business-summary.png)
-![Extended Casual Summary](/images/posts/rss/extended-casual-summary.png)
+![Short Summary](../../src/assets/images/posts/rss/short-summary.png)
+![White Short Summary](../../src/assets/images/posts/rss/white-short-summary.png)
+![Article](../../src/assets/images/posts/rss/article.png)
+![Extended Technical Summary](../../src/assets/images/posts/rss/extended-technical-summary.png)
+![Extended Business Summary](../../src/assets/images/posts/rss/extended-business-summary.png)
+![Extended Casual Summary](../../src/assets/images/posts/rss/extended-casual-summary.png)
 
 
 ## Next Steps

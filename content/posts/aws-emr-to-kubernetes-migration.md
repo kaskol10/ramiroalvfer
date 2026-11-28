@@ -23,7 +23,7 @@ cover: "covers/emr-to-kubernetes.webp"
 
 In December 2020, our Spark workloads orchestration using EMR had become increasingly complex. The Step Function flow orchestrating different EMR clusters was becoming difficult to manage. This led to our Platform Engineering team proposing a migration to Kubernetes in January 2021.
 
-![EMR to Kubernetes Migration](/images/posts/step-function.webp)
+![EMR to Kubernetes Migration](../../src/assets/images/posts/step-function.webp)
 
 ### Core Migration Objectives
 
@@ -98,7 +98,7 @@ In both cases, Push-gateway was used to allow batch jobs to expose their metrics
 In the EMR scenario, the monitoring solution had some caveats regarding workflow complexity that created friction between teams because of the lack of standardisation.
 With the Kubernetes solution, Platform Engineering provides an opinionated workflow that helps to easily add metrics to Prometheus and dashboards to Grafana.
 
-![Grafana Custom Dashboard](/images/posts/grafana-emr.webp)
+![Grafana Custom Dashboard](../../src/assets/images/posts/grafana-emr.webp)
 Another important point is the Spark History Server; here are some differences:
 
 With EMR, it was available only during the cluster execution.
@@ -116,16 +116,16 @@ The main achievement here was being able to get rid of the in-house solution whi
 
 Once the migration had been completed, it was enough to compare with the EMR solution to review how well the job had been performed.
 
-![Performance Comparison](/images/posts/emr-comparison-performance.webp)
+![Performance Comparison](../../src/assets/images/posts/emr-comparison-performance.webp)
 
 ### Cost-effectiveness
 
 One motivation to move to Kubernetes was to reduce the cost; as you know, EMR has a fee on AWS, but EKS does too. The EKS fee is lower than the EMR fee, although the EKS fee is shared between all the workloads running on the cluster. Let’s review if the goal has been accomplished by reviewing one lower environment:
 
-![Cost Comparison](/images/posts/cost-effectiveness-emr.webp)
+![Cost Comparison](../../src/assets/images/posts/cost-effectiveness-emr.webp)
 
 On top of this, there is an increase in the number of jobs launched:
-![Jobs Comparison](/images/posts/job-comparison-emr.webp)
+![Jobs Comparison](../../src/assets/images/posts/job-comparison-emr.webp)
 
 ## Summary
 

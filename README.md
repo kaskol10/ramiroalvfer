@@ -23,7 +23,7 @@ npm run preview
 | Path | Purpose |
 |---|---|
 | `content/posts/` | Blog posts (Markdown) |
-| `content/feed/` | Status wire entries |
+| `content/feed/` | Log entries (`/log`) |
 | `src/data/` | Projects, talks, experience, certifications |
 | `functions/api/` | Cloudflare Pages Functions (broadcast subscribe) |
 | `docs/BROADCAST.md` | D1 + Turnstile + Resend setup |
@@ -38,7 +38,7 @@ Cloudflare-native: form → Turnstile → `/api/subscribe` → D1. Setup: [docs/
 2. Point `k8scockpit.tech` at the Pages project.
 3. Add a 301 from `ramiroalvfer.dev` → `https://k8scockpit.tech` (DNS or Pages).
 4. Update GitHub profile website to `https://k8scockpit.tech`.
-5. Smoke-test `/`, `/blog`, `/rss.xml`, `/sitemap-index.xml`, `/cv`, `/speaking`, `/feed`.
+5. Smoke-test `/`, `/blog`, `/rss.xml`, `/sitemap-index.xml`, `/cv`, `/speaking`, `/log`.
 
 ## Refresh GitHub stars
 

@@ -11,7 +11,7 @@ tags:
   - certifications
   - aws
   - genai
-cover: "certs/AWSCertifiedGenerativeAIDeveloper-Professional.png"
+cover: "covers/aws-genai-professional.png"
 
 ---
 
