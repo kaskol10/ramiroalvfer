@@ -17,6 +17,8 @@ export const site = {
 export const socials = {
   github: 'https://github.com/kaskol10',
   linkedin: 'https://www.linkedin.com/in/ramiroalvfer/',
+  x: 'https://x.com/ramiroalvfer',
+  xHandle: '@ramiroalvfer',
   buyMeACoffee: 'https://www.buymeacoffee.com/ramiroalvfer',
   canispot: 'https://canispot.ai/',
   minirss: 'https://minirss.ai/',
