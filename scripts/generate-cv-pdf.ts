@@ -185,7 +185,7 @@ async function main() {
     paragraph(ctx, talk.title, { size: 10, bold: true, gap: 1 });
     paragraph(
       ctx,
-      `${talk.session ? `${talk.session}  |  ` : ''}${talk.event}  |  ${talk.date}`,
+      `${talk.event}  |  ${talk.date}`,
       { size: 9, color: ash, gap: talk.url ? 1 : 5 },
     );
     if (talk.url) {

@@ -3,8 +3,10 @@ export const site = {
   persona: 'K8sCockpit',
   title: 'Staff Platform Engineer · Lead Architecture Board @ Empathy.co',
   claim: 'First Golden Kubestronaut in Spain',
+  /** One-line pitch; reuse it wherever the site needs a headline. */
+  pitch: 'I run AI and GPU workloads on Kubernetes, and make them cheaper.',
   description:
-    'Platform engineer shipping Kubernetes tooling, self-hosted AI, and products like CanISpot.ai and MiniRSS.ai — CloudNativePG, FinOps, GPUs, inference, and observability. Co-founder & advisor at Resizes.',
+    'Staff Platform Engineer running AI and GPU workloads on Kubernetes and cutting what they cost. Golden Kubestronaut, creator of karpenter-optimizer and CanISpot.ai.',
   url: 'https://k8scockpit.tech',
   email: 'ramiroalvfer@gmail.com',
   location: 'Asturias, Spain',

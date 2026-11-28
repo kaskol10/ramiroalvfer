@@ -13,9 +13,8 @@ const { talks, posts } = Astro.props;
 
 <section class="border-b border-line py-20 md:py-28">
   <div class="mx-auto grid max-w-6xl gap-12 px-4 md:grid-cols-[1.15fr_0.85fr] md:px-6">
-    {/* Writing second to projects, ahead of speaking — field notes back the OSS work */}
     <div class="reveal">
-      <p class="label mb-3">[ field notes · backs the work ]</p>
+      <p class="label mb-3">[ latest posts ]</p>
       <div class="mb-6 flex items-end justify-between gap-4">
         <h2 class="font-display text-3xl font-bold text-bone">Writing</h2>
         <a href="/blog" class="font-mono text-[11px] uppercase tracking-[0.12em] text-accent hover:underline">
@@ -39,7 +38,7 @@ const { talks, posts } = Astro.props;
     </div>
 
     <div class="reveal" style="transition-delay: 100ms">
-      <p class="label mb-3">[ session log · archive ]</p>
+      <p class="label mb-3">[ recent talks ]</p>
       <div class="mb-6 flex items-end justify-between gap-4">
         <h2 class="font-display text-3xl font-bold text-bone">Speaking</h2>
         <a href="/speaking" class="font-mono text-[11px] uppercase tracking-[0.12em] text-accent hover:underline">
@@ -56,7 +55,7 @@ const { talks, posts } = Astro.props;
               rel={talk.url?.startsWith('http') ? 'noopener noreferrer' : undefined}
             >
               <p class="font-mono text-[10px] uppercase tracking-[0.12em] text-ash">
-                {talk.session} · {talk.event} · {talk.date}
+                {talk.event} · {talk.date}
               </p>
               <p class="mt-1 font-display text-base font-semibold text-bone">{talk.title}</p>
             </a>
