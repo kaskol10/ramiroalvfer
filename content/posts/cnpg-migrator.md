@@ -15,7 +15,7 @@ tags:
   - migration
   - helm
   - open-source
-cover: "posts/cnpg-1.webp"
+cover: "covers/cnpg-migrator.webp"
 ---
 
 If your apps run on Kubernetes, you probably want the database lifecycle to look like everything else in the cluster: declarative manifests, GitOps, observable Jobs, and resources you can tune without a separate control plane.
@@ -117,7 +117,7 @@ The operator owns extensions. The migrator owns data. That split keeps the cutov
 
 Most of the workflow happens in the UI: configure source and target, pick migration options, then follow progress through dump, restore, and verification.
 
-![CNPG Migrator new migration form](/images/posts/cnpg-1.webp)
+![CNPG Migrator new migration form](../../src/assets/images/posts/cnpg-1.webp)
 
 After you submit a migration, the API creates a Kubernetes Job and PVC. Follow progress from the UI or the cluster:
 
@@ -129,7 +129,7 @@ kubectl logs -n cnpg-migrator job/cnpg-migrator-<migration-id> -c pg-restore
 
 When verification is enabled, the UI compares database sizes. That catches gross misses (not logical corruption), but it's enough to confirm the cutover landed:
 
-![CNPG Migrator verification results and logs](/images/posts/cnpg-2.webp)
+![CNPG Migrator verification results and logs](../../src/assets/images/posts/cnpg-2.webp)
 
 ---
 

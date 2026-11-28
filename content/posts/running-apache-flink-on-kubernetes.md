@@ -41,7 +41,7 @@ Apache Flink has two main components:
 
 Flink can execute application in one of these three ways:
 
-![Flink Deployment Modes](/images/posts/flink-modes.png)
+![Flink Deployment Modes](../../src/assets/images/posts/flink-modes.png)
 
 The main differences between these three ways are:
 - Cluster lifecycle and resource isolation
@@ -62,7 +62,7 @@ Another interesting topic would be how to be resilient using Apache Flink. This 
 
 Empathy Data Streaming required use checkpoints and savepoints to be fault tolerant as well as self healing in case of some unexpected job failures. Therefore, JobManager High Availability(HA) is needed, also, because JobManager HA ensures that a Flink cluster always continues executing the submitted jobs.
 
-![Flink High Level Architecture](/images/posts/flink-arch.png)
+![Flink High Level Architecture](../../src/assets/images/posts/flink-arch.png)
 
 ## Apache Flink Kubernetes Deployment
 The reasons to deploy Apache Flink over Kubernetes were mentioned in the challenges section. To sum up:
@@ -86,7 +86,7 @@ some ConfigMaps to pass configurations settings such as flink-conf.yaml, logback
 
 The main pain point of this setup is that it requires a huge knowledge of Kubernetes to define every Kubernetes resource and apply the glue between the different resources.
 
-![Flink K8s Standalone mode](/images/posts/flink-standalone.png)
+![Flink K8s Standalone mode](../../src/assets/images/posts/flink-standalone.png)
 
 This method provides monitoring, self healing and HA.
 Kubernetes Native
@@ -109,7 +109,7 @@ The following resources are needed:
 - flina PodMonitor sending the metrics from each jobManager and TaskManager pod to Prometheus
 - some ConfigMaps to pass configurations settings such as flink-conf.yaml, logback-console.xml, log4j-cli.properties or log4j-console.properties if required
 
-![Flink K8s Kubernetes Native mode](/images/posts/flink-kubernetes-native.png)
+![Flink K8s Kubernetes Native mode](../../src/assets/images/posts/flink-kubernetes-native.png)
 
 The decision at Empathy to use Apache Flink Kubernetes Native in Application Mode was mainly because using this method, the jobManager and TaskManager resources (requests/limits) are automatically handled by Flink Native. Hence, it will aid in an easy configuration setup while maintaining all the benefits of the other solution such as monitoring, self healing and HA.
 ## Solution Details

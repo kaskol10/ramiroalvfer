@@ -47,7 +47,7 @@ Required Pages env:
 - [ ] `https://k8scockpit.tech/blog/cnpg-migrator`
 - [ ] `https://k8scockpit.tech/cv`
 - [ ] `https://k8scockpit.tech/speaking`
-- [ ] `https://k8scockpit.tech/feed`
+- [ ] `https://k8scockpit.tech/log`
 - [ ] `https://k8scockpit.tech/rss.xml` (200, valid XML)
 - [ ] `https://k8scockpit.tech/sitemap-index.xml`
 - [ ] `https://k8scockpit.tech/archives` → `/blog`

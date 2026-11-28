@@ -5,7 +5,10 @@ import Layout from '../../layouts/Layout.astro';
 import Newsletter from '../../components/Newsletter.astro';
 import PostList from '../../components/PostList.astro';
 import { site } from '../../data/socials';
-import { coverUrl, formatDate, readingMinutes } from '../../lib/utils';
+import { Image } from 'astro:assets';
+import portrait from '../../assets/images/portrait.jpeg';
+import { formatDate, readingMinutes } from '../../lib/utils';
+import { coverImage } from '../../lib/covers';
 import { relatedTo } from '../../lib/posts';
 
 type Post = CollectionEntry<'posts'>;
@@ -29,7 +32,7 @@ type Props = { post: Post; newer?: Post; older?: Post; related: Post[] };
 
 const { post, newer, older, related } = Astro.props;
 const { Content } = await render(post);
-const cover = coverUrl(post.data.cover);
+const cover = coverImage(post.data.cover);
 const minutes = readingMinutes(post.body ?? '');
 const url = new URL(`/blog/${post.id}`, site.url).href;
 const shareImage = `/og/${post.id}.png`;
@@ -67,11 +70,12 @@ const jsonLd = {
         </h1>
         <p class="mt-4 text-lg text-ash">{post.data.description}</p>
         <p class="mt-6 flex items-center gap-3 text-sm text-bone-dim">
-          <img
-            src={site.portrait}
+          <Image
+            src={portrait}
             alt=""
-            width="32"
-            height="32"
+            width={64}
+            height={64}
+            fit="cover"
             class="h-8 w-8 rounded-full border border-line object-cover grayscale"
           />
           <span>
@@ -92,7 +96,15 @@ const jsonLd = {
 
     {cover && (
       <div class="mx-auto max-w-4xl px-4 pt-10 md:px-6">
-        <img src={cover} alt="" class="w-full border border-line object-cover" />
+        <Image
+          src={cover}
+          alt=""
+          width={1728}
+          widths={[640, 960, 1728]}
+          sizes="(min-width: 896px) 848px, 100vw"
+          loading="eager"
+          class="h-auto w-full border border-line"
+        />
       </div>
     )}
 
@@ -189,6 +201,7 @@ const jsonLd = {
   }
   .prose-cockpit img {
     max-width: 100%;
+    height: auto;
     border: 1px solid var(--color-line);
     margin: 1.5em 0;
   }

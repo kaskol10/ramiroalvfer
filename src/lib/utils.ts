@@ -1,9 +1,3 @@
-export function coverUrl(cover?: string): string | undefined {
-  if (!cover) return undefined;
-  if (cover.startsWith('http') || cover.startsWith('/')) return cover;
-  return `/images/${cover}`;
-}
-
 /** Whole minutes to read `text` at about 220 words per minute (minimum 1). */
 export function readingMinutes(text: string): number {
   const words = text.trim().split(/\s+/).filter(Boolean).length;

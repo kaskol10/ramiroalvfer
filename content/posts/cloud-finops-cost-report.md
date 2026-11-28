@@ -53,7 +53,7 @@ Grafana is a visualization tool with a dashboard that provides an array of graph
 
 ### Diagram
 
-![](/images/posts/diagram-cost-report.png)
+![](../../src/assets/images/posts/diagram-cost-report.png)
 
 With all these compatible components, building a solution is simple. The first step is to retrieve the CURs from AWS, preferably with all the billing information consolidated into a single account. Applying this best practice provides benefits, such as:
 
@@ -85,7 +85,7 @@ For this step, it is extremely important to consider the [logic of the dashboard
 - Invoice spend by account
 
 
-![](/images/posts/dashboard-cost-report.png)
+![](../../src/assets/images/posts/dashboard-cost-report.png)
 
 These graphs are grouped in a row titled 'Billing Summary', which provides invoice spend information. The invoice spend is the sum of the previous month's invoice, whereas the amortized spend is that month's cost of AWS usage, including any upfront or partial fees paid for Reserved Instances of Savings Plan (even if they were paid in another account, such as a payer account).
 

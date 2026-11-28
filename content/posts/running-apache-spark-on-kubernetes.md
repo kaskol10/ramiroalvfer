@@ -57,7 +57,7 @@ Apache Spark is a unified analytics engine for big data processing, particularly
 
 ### Apache Spark Architecture
 
-![Spark on Kubernetes Architecture](/images/posts/spark-submit.webp)
+![Spark on Kubernetes Architecture](../../src/assets/images/posts/spark-submit.webp)
 
 1. Spark Submit sends request to Kubernetes API
 2. K8s schedules Spark Driver pod
@@ -86,7 +86,7 @@ The SparkOperator project was developed by Google and is now an open-source proj
 - **Metrics**: Supports collecting and exporting application-level metrics and driver/executor metrics to Prometheus.
 - **Open-source community**: Everyone can contribute.
 
-![Spark Submit vs Spark Operator](/images/posts/spark-operator.webp)
+![Spark Submit vs Spark Operator](../../src/assets/images/posts/spark-operator.webp)
 
 The image above shows the main commands of Spark Submit vs Spark Operator.
 
@@ -101,7 +101,7 @@ The flowchart would be as follows:
 - ArgoCD syncs your git changes to your K8s cluster (for instance, create an Argo Workflow template).
 - Argo Workflows template allows you to customise inputs and reuse configurations for multiple Spark jobs and create nightly jobs based on Argo Workflows.
 
-![Spark Solution Flowchart](/images/posts/spark-solution.webp)
+![Spark Solution Flowchart](../../src/assets/images/posts/spark-solution.webp)
 
 ### ArgoCD
 ArgoCD is a GitOps continuous delivery tool for Kubernetes. The main benefits are:

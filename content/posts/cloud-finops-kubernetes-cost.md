@@ -27,13 +27,13 @@ Nowadays, a lot of companies run their workloads on Kubernetes because there are
 
 Some solutions have already been created to tackle this lack of data, such as Vantage.sh and Kubecost, and gain Kubernetes Cost Visibility. Before going ahead with this solution proposal, the Platform Engineering team Empathy.co explored two Kubecost options: Kubecost as a Prometheus metric explorer and the Kubecost Helm Chart.
 
-![Kubecost Prometheus Metrics Explorer](/images/posts/kubecost-metrics-explorer.webp)
+![Kubecost Prometheus Metrics Explorer](../../src/assets/images/posts/kubecost-metrics-explorer.webp)
 
-![Kubecost Helm Chart](/images/posts/kubecost-helm-chart.webp)
+![Kubecost Helm Chart](../../src/assets/images/posts/kubecost-helm-chart.webp)
 
-![AWS Cost Explorer Daily Cost EC2 Test Account](/images/posts/aws-daily-cost-test.webp)
+![AWS Cost Explorer Daily Cost EC2 Test Account](../../src/assets/images/posts/aws-daily-cost-test.webp)
 
-![AWS Cost Explorer Daily Cost EC2 & EKS Free Test Account](/images/posts/aws-daily-cost-test-k8s.webp)
+![AWS Cost Explorer Daily Cost EC2 & EKS Free Test Account](../../src/assets/images/posts/aws-daily-cost-test-k8s.webp)
 
 In the graphs above, Kubecost doesn’t show the same cost per cluster, nor is the price correlated with those in AWS Cost Explorer:
 
@@ -42,9 +42,9 @@ In the graphs above, Kubecost doesn’t show the same cost per cluster, nor is t
 
 It’s a significant difference, therefore we investigated other approaches as we began to create our own dashboards, based on autoscaling instance type info.
 
-![Grafana Dashboard Cluster Cost Hourly based on Autoscaling info for the first week of December 2021](/images/posts/grafana-hourly-cost.webp)
+![Grafana Dashboard Cluster Cost Hourly based on Autoscaling info for the first week of December 2021](../../src/assets/images/posts/grafana-hourly-cost.webp)
 
-![AWS Cost Explorer for first week of December 2021](/images/posts/aws-cost-explorer.webp)
+![AWS Cost Explorer for first week of December 2021](../../src/assets/images/posts/aws-cost-explorer.webp)
 
 Calculating the average of the first week of December 2021, based on the Autoscaling instance type, the corresponding costs using the following tools are:
 
@@ -65,7 +65,7 @@ Based on cluster autoscaler info, we can apply a service to the AWS Pricing API 
 
 ### High Level Diagram
 
-![High Level Diagram](/images/posts/high-level-diagram.webp)
+![High Level Diagram](../../src/assets/images/posts/high-level-diagram.webp)
 
 The above approach looks pretty simple: an app that exports cost metrics to Prometheus provides all the necessary dashboards in Grafana. Prometheus and Grafana are part of our monitoring stack, as they are for the vast majority of software companies nowadays. Therefore, after testing the solution at Empathy.co, we decided to make it open source so as to contribute to the community and embrace feedback.
 
@@ -85,7 +85,7 @@ The Kubernetes Cost allocation can be split into multiple layers:
 
 The following diagram illustrates the difference between requests and usage.
 
-![Cluster Cost](/images/posts/cluster-cost.webp)
+![Cluster Cost](../../src/assets/images/posts/cluster-cost.webp)
 
 Resource Requests are those that are added to the final invoice, but knowing the usage allows underutilization to be measured and determine how much can be saved by doing a pod rightsizing.
 
@@ -93,7 +93,7 @@ Resource Requests are those that are added to the final invoice, but knowing the
 
 Knowing the instance type and the availability zone, the cost is simply a sum between different values based on the cost report deployment (the value of which is calculated by the AWS Pricing API every 12 hours).
 
-![cost-taxonomy](/images/posts/cost-taxonomy.webp)
+![cost-taxonomy](../../src/assets/images/posts/cost-taxonomy.webp)
 
 The total cluster cost presented above can be divided into a number of different costs, attending to their origins (that is, the resources they originate from):
 
@@ -106,7 +106,7 @@ The total cluster cost presented above can be divided into a number of different
 
 To summarize the taxonomy, here’s a visual representation of one node and one pod running in that node:
 
-![Container Usage](/images/posts/container-usage.webp)
+![Container Usage](../../src/assets/images/posts/container-usage.webp)
 
 
 ## Implementation

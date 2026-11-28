@@ -90,7 +90,7 @@ By default, a MIG device consists of a single "GPU Instance" and a single "Compu
 
 When only a single CI is created (that consumes the entire compute capacity of the GI), then the CI sizing is implied in the device name.
 
-![](/images/posts/mig/mig-device-names.png)
+![](../../src/assets/images/posts/mig/mig-device-names.png)
 
 ### H100-Specific Capabilities
 The Nvidia H100 supports a wide range of MIG profiles, allowing you to tailor GPU partitions to your needs. For example, you can create up to 7 separate GPU instances on a single H100, each with different memory and compute allocations.
@@ -128,7 +128,7 @@ Below is a table of available MIG profiles for the H100:
 
 For a visual representation, the diagram below shows a representation of how to build all valid combinations of GPU instances: 
 
-![](/images/posts/mig/mig-profiles-h100.png)
+![](../../src/assets/images/posts/mig/mig-profiles-h100.png)
 
 With MIG, you can right-size your GPU resources, improve efficiency, and enable secure, multi-tenant workloads on the powerful H100.
 
@@ -346,7 +346,7 @@ To illustrate the benefits of MIG on the H100 in Kubernetes, let's look at a rea
 ### Scenario
 A research platform runs a mix of machine learning training, inference, and interactive Jupyter notebooks. Previously, each workload required a dedicated GPU, leading to underutilization and high costs. By enabling MIG on the H100 and integrating with Kubernetes, the team was able to partition a single GPU into multiple isolated instances, each assigned to a different workload or user.
 
-![](/images/posts/mig/gpu-mig-use-cases.png) 
+![](../../src/assets/images/posts/mig/gpu-mig-use-cases.png) 
 
 ### How MIG Improved Efficiency
 - **Resource Utilization:** Instead of leaving large portions of the GPU idle, each MIG instance was right-sized for its workload, maximizing the use of available compute and memory.

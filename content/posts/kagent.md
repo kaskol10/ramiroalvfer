@@ -74,13 +74,13 @@ The model I chose to test with Ollama is [Qwen2.5-32B-Instruct](https://huggingf
 
 Explore Kubernetes without knowing the commands - this is particularly useful for beginners starting to interact with Kubernetes clusters. For experts, it can help with complex issues.
 
-![Kubernetes Agent](/images/posts/k8s-agent.png)
+![Kubernetes Agent](../../src/assets/images/posts/k8s-agent.png)
 
 ## Observability Agent
 
 This is a great troubleshooting helper for observability concerns.
 
-![Observability Agent](/images/posts/observability-agent.png)
+![Observability Agent](../../src/assets/images/posts/observability-agent.png)
 
 ## Documentation Agent
 
@@ -127,15 +127,15 @@ Following the documentation, I chose to use a local directory in this case. You 
 
 After following the documentation and setting everything up, does it work?
 
-![KAgent Docs 2 Vec](/images/posts/kagent-docs2vec.png)
+![KAgent Docs 2 Vec](../../src/assets/images/posts/kagent-docs2vec.png)
 
 Yes! It works! :rocket:
 
-![KAgent Docs Example](/images/posts/docs-agent-1.png)
+![KAgent Docs Example](../../src/assets/images/posts/docs-agent-1.png)
 
-![KAgent Docs Example](/images/posts/docs-agent-2.png)
+![KAgent Docs Example](../../src/assets/images/posts/docs-agent-2.png)
 
-![KAgent Docs Example](/images/posts/docs-agent-3.png)
+![KAgent Docs Example](../../src/assets/images/posts/docs-agent-3.png)
 
 As you can see, it works extremely well. The agent uses the documentation to answer questions properly and provides links for deeper exploration.
 

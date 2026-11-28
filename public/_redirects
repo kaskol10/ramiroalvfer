@@ -3,6 +3,7 @@
 /portfolio /cv 301
 /contact /cv 301
 /feed.xml /rss.xml 301
+/feed /log 301
 
 # Common old post URL patterns (Nuxt Content often used /posts/slug or /slug)
 /posts/:slug /blog/:slug 301

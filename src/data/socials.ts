@@ -10,7 +10,6 @@ export const site = {
   url: 'https://k8scockpit.tech',
   email: 'ramiroalvfer@gmail.com',
   location: 'Asturias, Spain',
-  portrait: '/images/KCDSpainPic.jpeg',
   logo: '/images/k8scockpitlogo.png',
 } as const;
 

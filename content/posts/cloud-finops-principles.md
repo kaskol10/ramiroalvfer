@@ -31,7 +31,7 @@ As DevOps revolutionised development by breaking down silos and increasing agili
 
 ## Cultural Shift and FinOps Team
 
-![FinOps Team Organization](/images/posts/finops-team.webp)
+![FinOps Team Organization](../../src/assets/images/posts/finops-team.webp)
 
 Key organizational principles:
 - All teams have a say in FinOps
@@ -84,7 +84,7 @@ Three distinct phases: Inform, Optimize and Operate. These phases aren’t linea
 2. **Optimize**: This phase will focus on empowering teams to identify and measure efficiency optimisations, like rightsizing, storage access frequency, or improving RI coverages. Goals are set upon the identified optimisations, which align with each team’s focus.
 3. **Operate**: This phase will be focused on procedures, defining processes that make the goals of technology, finance and business achievable. Automation could be a good way to perform the process, avoiding repeated human error.
 
-![FinOps Lifecycle](/images/posts/finops-lifecycle.webp)
+![FinOps Lifecycle](../../src/assets/images/posts/finops-lifecycle.webp)
 
 Companies can be in one of the three phases defined above; currently, Empathy.co is in the inform phase.
 

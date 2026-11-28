@@ -37,7 +37,7 @@ The foundation requires several key components:
 ### Canary
 Channel a limited amount of traffic to a new canary service, and then if it passes reliability tests, you can gradually shift all traffic from the old to the new service, and the canary becomes the default 
 
-![Canary Strategy](/images/posts/canary-argo-rollouts.png)
+![Canary Strategy](../../src/assets/images/posts/canary-argo-rollouts.png)
 
 ### Feature Flag
 
@@ -47,13 +47,13 @@ Control the code launch remotely through a toggle-like feature, which enables ch
 
 Gradually transfer traffic from an existing application (blue) to a newer one (green), while the blue version acts as a backup.
 
-![Blue/Green Strategy](/images/posts/blue-green-argo-rollouts.png)
+![Blue/Green Strategy](../../src/assets/images/posts/blue-green-argo-rollouts.png)
 
 ### A/B Testing
 
 Expose two different categories of the audience to two different application versions and analyze their performance to decide which is the ideal version.
 
-![A/B Testing Strategy](/images/posts/ab-testing-argo-rollouts.png)
+![A/B Testing Strategy](../../src/assets/images/posts/ab-testing-argo-rollouts.png)
 
 Which tactic you pick depends on your goals and which you think would fit your workloads best.
 
@@ -68,7 +68,7 @@ Although those are the basics methods, Argo Rollouts allows more custom analysis
 - Automated rollback in case SLO and Error Budget is burnt out based on analysis from Prometheus Metrics
 - Scale down the old application release after a while, in order to guarantee a faster rollback in case of failures; no need to scale up the previous version
 
-![Custom Strategy](/images/posts/custom-strategy-argo-rollouts.png)
+![Custom Strategy](../../src/assets/images/posts/custom-strategy-argo-rollouts.png)
 
 ### Outline the Metrics You Want to Measure
 With Progressive Delivery, you can reduce risk. This is mainly because you continuously test code changes, analyze performance and implement your learnings all in real time. To ensure that this happens seamlessly, it's important to have KPIs against which to measure the success of your release. In our case, the SLO metrics would be a good KPI to choose. Thanks to Pyrra, there is a set of Prometheus Rules to monitor the Error Budget of your application and send an alert in case it is close to being burnt out.
@@ -88,7 +88,7 @@ During the migration, the Deployment and the Rollout should coexist to avoid dow
 
 A temporal ingress and service will be located to avoid downtime and ensure correct behavior during the migration, because rollouts introduce a hash label in the selector to route the traffic.
 
-![Migration](/images/posts/migration-argo-rollouts.png)
+![Migration](../../src/assets/images/posts/migration-argo-rollouts.png)
 
 After the migration, the temporal service and ingress can be deleted.
 
