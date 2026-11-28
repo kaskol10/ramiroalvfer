@@ -16,8 +16,6 @@ const repos = [
   'cnpg-migrator',
   'self-hosted-renovate-review',
   'rss-ai-reader',
-  'external-snapshotter',
-  'asturiassoftwarecrafters-noviembre-2024-ops-slides',
 ];
 
 for (const repo of repos) {

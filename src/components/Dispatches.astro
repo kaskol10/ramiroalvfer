@@ -47,7 +47,7 @@ const { talks, posts } = Astro.props;
         </a>
       </div>
       <ul class="divide-y divide-line border border-line">
-        {talks.slice(0, 4).map((talk) => (
+        {talks.filter((talk) => talk.url).slice(0, 4).map((talk) => (
           <li>
             <a
               href={talk.url ?? '/speaking'}

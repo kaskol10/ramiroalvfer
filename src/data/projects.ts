@@ -3,7 +3,7 @@ export type Project = {
   slug: string;
   description: string;
   language: string;
-  role: 'creator' | 'maintainer';
+  role: 'creator';
   tier: 'flagship' | 'supporting';
   /** Product site or GitHub repo URL */
   url: string;
@@ -94,32 +94,6 @@ export const projects: Project[] = [
     url: 'https://github.com/kaskol10/self-hosted-renovate-review',
     stars: 11,
     themes: ['ai', 'platform'],
-  },
-  {
-    name: 'external-snapshotter',
-    slug: 'external-snapshotter',
-    description:
-      'CSI external-snapshotter sidecar for Kubernetes VolumeSnapshot CRDs.',
-    language: 'Go',
-    role: 'maintainer',
-    tier: 'supporting',
-    kind: 'oss',
-    url: 'https://github.com/kaskol10/external-snapshotter',
-    stars: 2,
-    themes: ['platform', 'data'],
-  },
-  {
-    name: 'ops-platform-slides',
-    slug: 'asturiassoftwarecrafters-noviembre-2024-ops-slides',
-    description:
-      'Ops → DevOps → Platform Engineering — talk slides from Asturias Software Crafters (Nov 2024).',
-    language: 'Markdown',
-    role: 'creator',
-    tier: 'supporting',
-    kind: 'oss',
-    url: 'https://github.com/kaskol10/asturiassoftwarecrafters-noviembre-2024-ops-slides',
-    stars: 1,
-    themes: ['platform'],
   },
 ];
 

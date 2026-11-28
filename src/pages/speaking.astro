@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { talks } from '../data/talks';
+
+const linkLabel = { video: 'watch', slides: 'slides', event: 'event page' } as const;
 ---
 
 <Layout title="Speaking" description="Conference talks and community sessions on Kubernetes, FinOps, and platform engineering.">
@@ -19,25 +21,35 @@ import { talks } from '../data/talks';
       <ol class="divide-y divide-line border border-line">
         {talks.map((talk, index) => (
           <li class="reveal" style={`transition-delay: ${Math.min(index, 10) * 40}ms`}>
-            <a
-              href={talk.url ?? '#'}
-              target={talk.url ? '_blank' : undefined}
-              rel={talk.url ? 'noopener noreferrer' : undefined}
-              class="grid gap-2 px-5 py-6 hover:bg-surface-raised md:grid-cols-[100px_1fr_auto] md:items-baseline"
-            >
-              <span class="font-mono text-xs text-accent">{talk.session}</span>
-              <div>
-                <h2 class="font-display text-xl font-semibold text-bone">{talk.title}</h2>
-                <p class="mt-1 font-mono text-[11px] uppercase tracking-[0.12em] text-ash">
-                  {talk.event} · {talk.date}
-                </p>
-              </div>
-              {talk.url && (
+            {talk.url ? (
+              <a
+                href={talk.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="grid gap-2 px-5 py-6 hover:bg-surface-raised md:grid-cols-[100px_1fr_auto] md:items-baseline"
+              >
+                <span class="font-mono text-xs text-accent">{talk.session}</span>
+                <div>
+                  <h2 class="font-display text-xl font-semibold text-bone">{talk.title}</h2>
+                  <p class="mt-1 font-mono text-[11px] uppercase tracking-[0.12em] text-ash">
+                    {talk.event} · {talk.date}
+                  </p>
+                </div>
                 <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-ash md:justify-self-end">
-                  watch ↗
+                  {linkLabel[talk.link ?? 'event']} ↗
                 </span>
-              )}
-            </a>
+              </a>
+            ) : (
+              <div class="grid gap-2 px-5 py-6 md:grid-cols-[100px_1fr_auto] md:items-baseline">
+                <span class="font-mono text-xs text-accent">{talk.session}</span>
+                <div>
+                  <h2 class="font-display text-xl font-semibold text-bone">{talk.title}</h2>
+                  <p class="mt-1 font-mono text-[11px] uppercase tracking-[0.12em] text-ash">
+                    {talk.event} · {talk.date}
+                  </p>
+                </div>
+              </div>
+            )}
           </li>
         ))}
       </ol>

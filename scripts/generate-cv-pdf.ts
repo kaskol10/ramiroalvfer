@@ -145,7 +145,7 @@ async function main() {
   paragraph(ctx, site.claim, { size: 10, color: accent, bold: true, gap: 6 });
   paragraph(
     ctx,
-    `${site.location}  |  ${site.cvEmail}  |  ${socials.github.replace('https://', '')}  |  ${site.url.replace('https://', '')}`,
+    `${site.location}  |  ${site.email}  |  ${socials.github.replace('https://', '')}  |  ${site.url.replace('https://', '')}`,
     { size: 9, color: ash, gap: 4 },
   );
   drawLine(ctx);
@@ -213,7 +213,7 @@ async function main() {
   paragraph(ctx, `MiniRSS.ai  ${socials.minirss}`, { size: 9.5, gap: 2 });
   paragraph(ctx, `GitHub      ${socials.github}`, { size: 9.5, gap: 2 });
   paragraph(ctx, `LinkedIn    ${socials.linkedin}`, { size: 9.5, gap: 2 });
-  paragraph(ctx, `Email       ${site.cvEmail}`, { size: 9.5, gap: 8 });
+  paragraph(ctx, `Email       ${site.email}`, { size: 9.5, gap: 8 });
 
   ensureSpace(ctx, 20);
   paragraph(

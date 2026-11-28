@@ -6,9 +6,7 @@ export const site = {
   description:
     'Platform engineer shipping Kubernetes tooling, self-hosted AI, and products like CanISpot.ai and MiniRSS.ai — CloudNativePG, FinOps, GPUs, inference, and observability. Co-founder & advisor at Resizes.',
   url: 'https://k8scockpit.tech',
-  email: 'contact@k8scockpit.com',
-  /** Personal address used on the downloadable CV */
-  cvEmail: 'ramiroalvfer@gmail.com',
+  email: 'ramiroalvfer@gmail.com',
   location: 'Asturias, Spain',
   portrait: '/images/KCDSpainPic.jpeg',
   logo: '/images/k8scockpitlogo.png',
