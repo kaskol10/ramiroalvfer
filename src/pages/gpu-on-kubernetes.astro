@@ -1,0 +1,198 @@
+---
+import { getEntry } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Newsletter from '../components/Newsletter.astro';
+import PostList from '../components/PostList.astro';
+import { formatDate } from '../lib/utils';
+import {
+  gpuGuide,
+  comparison,
+  synthetic,
+  migProfiles,
+  chooseHami,
+  chooseMig,
+  measureYourself,
+  comingNext,
+} from '../data/gpu-guide';
+
+const sources = (await Promise.all(gpuGuide.sources.map((id) => getEntry('posts', id)))).filter(
+  (post) => post !== undefined,
+);
+
+const th = 'border-b border-line px-4 py-3 text-left font-mono text-[11px] uppercase tracking-[0.12em] text-ash';
+const td = 'border-b border-line px-4 py-3 align-top text-sm text-bone-dim';
+const rowHead = 'border-b border-line px-4 py-3 text-left align-top text-sm font-semibold text-bone';
+---
+
+<Layout title={gpuGuide.title} description={gpuGuide.description} image="/og/gpu-on-kubernetes.png">
+  <section class="border-b border-line py-16 md:py-20">
+    <div class="mx-auto max-w-4xl px-4 md:px-6">
+      <p class="label mb-3">[ field guide ] · updated {formatDate(gpuGuide.updated)}</p>
+      <h1 class="font-display text-4xl font-bold leading-tight tracking-tight text-bone sm:text-5xl">
+        {gpuGuide.title}
+      </h1>
+      <p class="mt-4 max-w-2xl text-lg text-ash">
+        Most workloads do not need a whole H100. This page collects what I have measured about sharing one
+        between several workloads on Kubernetes, and how I would choose between the options.
+      </p>
+      <p class="mt-4 font-mono text-xs text-ash">Tested: {gpuGuide.tested}.</p>
+    </div>
+  </section>
+
+  <section class="border-b border-line py-14">
+    <div class="mx-auto max-w-4xl px-4 md:px-6">
+      <p class="label mb-3">[ the short answer ]</p>
+      <h2 class="font-display text-2xl font-bold text-bone sm:text-3xl">Start with HAMi unless you need hard isolation</h2>
+      <div class="mt-8 grid gap-4 md:grid-cols-2">
+        <div class="frame border border-accent/50 bg-accent/5 p-6">
+          <h3 class="font-display text-xl font-semibold text-bone">Choose HAMi when</h3>
+          <ul class="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-bone-dim">
+            {chooseHami.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+        <div class="frame border border-line bg-surface-raised p-6">
+          <h3 class="font-display text-xl font-semibold text-bone">Choose MIG when</h3>
+          <ul class="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-bone-dim">
+            {chooseMig.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      </div>
+      <p class="mt-6 max-w-2xl text-sm leading-relaxed text-ash">
+        The two can be combined: HAMi on training clusters, where speed matters most, and MIG for inference
+        serving, where isolation matters most.
+      </p>
+    </div>
+  </section>
+
+  <section class="border-b border-line py-14">
+    <div class="mx-auto max-w-4xl px-4 md:px-6">
+      <p class="label mb-3">[ side by side ]</p>
+      <h2 class="font-display text-2xl font-bold text-bone sm:text-3xl">HAMi and MIG on the same H100</h2>
+      <div class="mt-8 overflow-x-auto border border-line">
+        <table class="w-full min-w-[640px] border-collapse">
+          <thead>
+            <tr>
+              <th scope="col" class={th}></th>
+              <th scope="col" class={th}>HAMi</th>
+              <th scope="col" class={th}>MIG</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparison.map((row) => (
+              <tr>
+                <th scope="row" class={rowHead}>{row.aspect}</th>
+                <td class={td}>{row.hami}</td>
+                <td class={td}>{row.mig}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-6 max-w-2xl text-sm leading-relaxed text-ash">
+        On real BERT-base training HAMi was 1.7 times faster per batch. An overnight run that takes 10 hours
+        on a MIG instance finishes in about 6 on a HAMi slice of the same size.
+      </p>
+    </div>
+  </section>
+
+  <section class="border-b border-line py-14">
+    <div class="mx-auto max-w-4xl px-4 md:px-6">
+      <p class="label mb-3">[ a warning about benchmarks ]</p>
+      <h2 class="font-display text-2xl font-bold text-bone sm:text-3xl">Synthetic tests overstate the gap</h2>
+      <p class="mt-4 max-w-2xl text-sm leading-relaxed text-ash">
+        Synthetic benchmarks showed HAMi more than eight times ahead. The real training job showed 1.7 times.
+        Measure with your own workload before you decide.
+      </p>
+      <div class="mt-8 overflow-x-auto border border-line">
+        <table class="w-full min-w-[520px] border-collapse">
+          <thead>
+            <tr>
+              <th scope="col" class={th}>Synthetic test</th>
+              <th scope="col" class={th}>HAMi 12 GB</th>
+              <th scope="col" class={th}>MIG 1g.12gb</th>
+            </tr>
+          </thead>
+          <tbody>
+            {synthetic.map((row) => (
+              <tr>
+                <th scope="row" class={rowHead}>{row.test}</th>
+                <td class={td}>{row.hami}</td>
+                <td class={td}>{row.mig}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-line py-14">
+    <div class="mx-auto max-w-4xl px-4 md:px-6">
+      <p class="label mb-3">[ reference ]</p>
+      <h2 class="font-display text-2xl font-bold text-bone sm:text-3xl">MIG profiles on an H100</h2>
+      <p class="mt-4 max-w-2xl text-sm leading-relaxed text-ash">
+        As reported by <code class="font-mono text-accent">nvidia-smi mig -lgip</code>. A profile name gives the
+        compute slices and the memory, so <code class="font-mono text-accent">1g.12gb</code> is one compute slice
+        with a nominal 12 GB.
+      </p>
+      <div class="mt-8 overflow-x-auto border border-line">
+        <table class="w-full min-w-[420px] border-collapse">
+          <thead>
+            <tr>
+              <th scope="col" class={th}>Profile</th>
+              <th scope="col" class={th}>Instances per GPU</th>
+              <th scope="col" class={th}>Memory each</th>
+            </tr>
+          </thead>
+          <tbody>
+            {migProfiles.map((profile) => (
+              <tr>
+                <th scope="row" class={`${rowHead} font-mono`}>{profile.name}</th>
+                <td class={td}>{profile.instances}</td>
+                <td class={td}>{profile.memoryGiB} GiB</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-line py-14">
+    <div class="mx-auto grid max-w-4xl gap-10 px-4 md:grid-cols-2 md:px-6">
+      <div>
+        <p class="label mb-3">[ run your own test ]</p>
+        <h2 class="font-display text-2xl font-bold text-bone">What to measure</h2>
+        <ol class="mt-4 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-bone-dim">
+          {measureYourself.map((item) => <li>{item}</li>)}
+        </ol>
+        <p class="mt-4 text-sm leading-relaxed text-ash">
+          With either option, DCGM metrics stop at the node or GPU instance. Per-pod GPU utilisation needs
+          extra monitoring.
+        </p>
+      </div>
+      <div>
+        <p class="label mb-3">[ not covered yet ]</p>
+        <h2 class="font-display text-2xl font-bold text-bone">Coming to this page</h2>
+        <ul class="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-bone-dim">
+          {comingNext.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-line py-14">
+    <div class="mx-auto max-w-4xl px-4 md:px-6">
+      <p class="label mb-3">[ sources ]</p>
+      <h2 class="mb-6 font-display text-2xl font-bold text-bone">The full write-ups</h2>
+      <PostList posts={sources} />
+      <p class="mt-6 text-sm leading-relaxed text-ash">
+        The benchmark code is in
+        <a href="https://github.com/kaskol10/gpu-benchmark" class="text-accent hover:underline" target="_blank" rel="noopener noreferrer">gpu-benchmark</a>.
+        Results depend on your workloads and cluster, so treat these numbers as a starting point.
+      </p>
+    </div>
+  </section>
+
+  <Newsletter />
+</Layout>
