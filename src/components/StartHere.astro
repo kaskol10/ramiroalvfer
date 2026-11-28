@@ -1,21 +1,30 @@
 ---
 import { getEntry } from 'astro:content';
 import { projects } from '../data/projects';
+import { gpuGuide } from '../data/gpu-guide';
 
-const postIds = ['gpu-hami-k8s', 'gpu-operator-mig'];
-const posts = (await Promise.all(postIds.map((id) => getEntry('posts', id)))).filter(
-  (post) => post !== undefined,
-);
+const post = await getEntry('posts', 'gpu-hami-k8s');
 const tool = projects.find((p) => p.slug === 'karpenter-optimizer');
 
 const items = [
-  ...posts.map((post) => ({
-    kind: 'post',
-    title: post.data.title,
-    description: post.data.description,
-    href: `/blog/${post.id}`,
+  {
+    kind: 'field guide',
+    title: gpuGuide.title,
+    description: gpuGuide.description,
+    href: '/gpu-on-kubernetes',
     external: false,
-  })),
+  },
+  ...(post
+    ? [
+        {
+          kind: 'post',
+          title: post.data.title,
+          description: post.data.description,
+          href: `/blog/${post.id}`,
+          external: false,
+        },
+      ]
+    : []),
   ...(tool
     ? [
         {

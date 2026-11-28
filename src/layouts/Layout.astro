@@ -41,6 +41,7 @@ const pageTitle = title ? `${title} · ${site.name}` : `${site.name} · ${site.p
 const canonical = new URL(Astro.url.pathname, site.url).href;
 
 const navLinks = [
+  { href: '/gpu-on-kubernetes', label: 'GPU guide' },
   { href: '/#projects', label: 'Projects' },
   { href: '/blog', label: 'Writing' },
   { href: '/speaking', label: 'Speaking' },
@@ -98,7 +99,7 @@ const isCurrent = (href: string) => !href.includes('#') && (path === href || pat
           <span class="font-display text-lg font-bold tracking-tight text-bone group-hover:text-accent">
             {site.name}
           </span>
-          <span class="hidden font-mono text-[10px] uppercase tracking-[0.16em] text-ash sm:inline">
+          <span class="hidden font-mono text-[10px] uppercase tracking-[0.16em] text-ash lg:inline">
             [ {site.persona} ]
           </span>
         </a>
