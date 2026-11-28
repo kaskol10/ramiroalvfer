@@ -17,6 +17,19 @@ export type Project = {
 /** Star counts captured at build time; refresh via GitHub API in CI when desired. */
 export const projects: Project[] = [
   {
+    name: 'karpenter-optimizer',
+    slug: 'karpenter-optimizer',
+    description:
+      'Cost optimization for Karpenter NodePools — usage analysis and AI-powered recommendations (Ollama / LiteLLM / Bedrock) to cut EC2 spend without losing performance.',
+    language: 'Go',
+    role: 'creator',
+    tier: 'flagship',
+    kind: 'oss',
+    url: 'https://github.com/kaskol10/karpenter-optimizer',
+    stars: 78,
+    themes: ['platform', 'finops', 'ai'],
+  },
+  {
     name: 'CanISpot.ai',
     slug: 'canispot',
     description:
@@ -42,17 +55,17 @@ export const projects: Project[] = [
     themes: ['ai'],
   },
   {
-    name: 'karpenter-optimizer',
-    slug: 'karpenter-optimizer',
+    name: 'self-hosted-renovate-review',
+    slug: 'self-hosted-renovate-review',
     description:
-      'Cost optimization for Karpenter NodePools — usage analysis and AI-powered recommendations (Ollama / LiteLLM / Bedrock) to cut EC2 spend without losing performance.',
+      'Inference-backed GitHub Action: reviews Renovate PRs with a self-hosted LLM — keep dependency AI on your infra.',
     language: 'Go',
     role: 'creator',
-    tier: 'flagship',
+    tier: 'supporting',
     kind: 'oss',
-    url: 'https://github.com/kaskol10/karpenter-optimizer',
-    stars: 78,
-    themes: ['platform', 'finops', 'ai'],
+    url: 'https://github.com/kaskol10/self-hosted-renovate-review',
+    stars: 11,
+    themes: ['ai', 'platform'],
   },
   {
     name: 'cnpg-migrator',
@@ -61,7 +74,7 @@ export const projects: Project[] = [
       'Web UI and API to migrate PostgreSQL (e.g. AWS RDS) to CloudNativePG with dump & restore Jobs on Kubernetes.',
     language: 'Go',
     role: 'creator',
-    tier: 'flagship',
+    tier: 'supporting',
     kind: 'oss',
     url: 'https://github.com/kaskol10/cnpg-migrator',
     stars: 2,
@@ -82,22 +95,10 @@ export const projects: Project[] = [
     relatedPost: 'rss-ai',
     themes: ['ai'],
   },
-  {
-    name: 'self-hosted-renovate-review',
-    slug: 'self-hosted-renovate-review',
-    description:
-      'Inference-backed GitHub Action: reviews Renovate PRs with a self-hosted LLM — keep dependency AI on your infra.',
-    language: 'Go',
-    role: 'creator',
-    tier: 'supporting',
-    kind: 'oss',
-    url: 'https://github.com/kaskol10/self-hosted-renovate-review',
-    stars: 11,
-    themes: ['ai', 'platform'],
-  },
 ];
 
 export const flagshipProjects = projects.filter((p) => p.tier === 'flagship');
 export const supportingProjects = projects.filter((p) => p.tier === 'supporting');
 export const productProjects = projects.filter((p) => p.kind === 'product');
-export const totalStars = projects.reduce((sum, p) => sum + (p.stars ?? 0), 0);
+/** Star counts below this are not shown: a small number says less than no number. */
+export const STAR_DISPLAY_MIN = 50;

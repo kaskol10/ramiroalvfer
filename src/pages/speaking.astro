@@ -1,17 +1,23 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { talks } from '../data/talks';
+import { site } from '../data/socials';
 
 const linkLabel = { video: 'watch', slides: 'slides', event: 'event page' } as const;
 ---
 
-<Layout title="Speaking" description="Conference talks and community sessions on Kubernetes, FinOps, and platform engineering.">
+<Layout title="Speaking" description="Conference talks and community sessions on Kubernetes, FinOps, platform engineering and AI platforms.">
   <section class="border-b border-line py-16 md:py-20">
     <div class="mx-auto max-w-6xl px-4 md:px-6">
-      <p class="label mb-3">[ session log ]</p>
+      <p class="label mb-3">[ talks ]</p>
       <h1 class="font-display text-4xl font-bold tracking-tight text-bone sm:text-5xl">Speaking</h1>
       <p class="mt-3 max-w-2xl text-ash">
-        Transmissions from KCDs, DevFests, HashiTalks, and local communities — FinOps, Velero, Spark, and platform engineering.
+        {talks.length} talks at KCDs, DevFests, HashiTalks and local meetups. Recent ones cover agentic AI on
+        platforms, FinOps and platform engineering.
+      </p>
+      <p class="mt-4 max-w-2xl text-ash">
+        Want a talk on GPUs, inference or cost on Kubernetes?
+        <a href={`mailto:${site.email}?subject=Speaking%20invitation`} class="text-accent hover:underline">Invite me to speak</a>.
       </p>
     </div>
   </section>
@@ -28,11 +34,11 @@ const linkLabel = { video: 'watch', slides: 'slides', event: 'event page' } as c
                 rel="noopener noreferrer"
                 class="grid gap-2 px-5 py-6 hover:bg-surface-raised md:grid-cols-[100px_1fr_auto] md:items-baseline"
               >
-                <span class="font-mono text-xs text-accent">{talk.session}</span>
+                <span class="font-mono text-xs text-accent">{talk.date.slice(0, 4)}</span>
                 <div>
                   <h2 class="font-display text-xl font-semibold text-bone">{talk.title}</h2>
                   <p class="mt-1 font-mono text-[11px] uppercase tracking-[0.12em] text-ash">
-                    {talk.event} · {talk.date}
+                    {talk.event}
                   </p>
                 </div>
                 <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-ash md:justify-self-end">
@@ -41,11 +47,11 @@ const linkLabel = { video: 'watch', slides: 'slides', event: 'event page' } as c
               </a>
             ) : (
               <div class="grid gap-2 px-5 py-6 md:grid-cols-[100px_1fr_auto] md:items-baseline">
-                <span class="font-mono text-xs text-accent">{talk.session}</span>
+                <span class="font-mono text-xs text-accent">{talk.date.slice(0, 4)}</span>
                 <div>
                   <h2 class="font-display text-xl font-semibold text-bone">{talk.title}</h2>
                   <p class="mt-1 font-mono text-[11px] uppercase tracking-[0.12em] text-ash">
-                    {talk.event} · {talk.date}
+                    {talk.event}
                   </p>
                 </div>
               </div>

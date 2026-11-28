@@ -5,7 +5,6 @@ export type Talk = {
   url?: string;
   /** What the link points at; drives the link label on the speaking page. */
   link?: 'video' | 'slides' | 'event';
-  session?: string;
 };
 
 export const talks: Talk[] = [
@@ -15,7 +14,6 @@ export const talks: Talk[] = [
     date: '2026-10-27',
     url: 'https://www.eventbrite.co.uk/e/agentic-ai-for-platform-engineering-building-agent-ready-platforms-tickets-2003193305100',
     link: 'event',
-    session: 'SX 14',
   },
   {
     title: 'From Ops to DevOps to Platform Engineering',
@@ -23,7 +21,6 @@ export const talks: Talk[] = [
     date: '2024-11',
     url: 'https://github.com/kaskol10/asturiassoftwarecrafters-noviembre-2024-ops-slides',
     link: 'slides',
-    session: 'SX 13',
   },
   {
     title: 'Cloud FinOps: Estrategias de ahorro en la nube',
@@ -31,7 +28,6 @@ export const talks: Talk[] = [
     date: '2024-10',
     url: 'https://github.com/kaskol10/awscommunitydayspain2024-cloudfinops-slides',
     link: 'slides',
-    session: 'SX 12',
   },
   {
     title: 'Cloud FinOps: Experiencias en el mundo real',
@@ -39,7 +35,6 @@ export const talks: Talk[] = [
     date: '2023-10-12',
     url: 'https://youtu.be/ePBn8cE-_uI?si=UjmifB0InyTss5Qy',
     link: 'video',
-    session: 'SX 11',
   },
   {
     title: 'Made Load Testing Dev-Friendly Again! When K6 meets Argo',
@@ -47,7 +42,6 @@ export const talks: Talk[] = [
     date: '2022-10-12',
     url: 'https://docs.google.com/presentation/d/1ujIw4NCcU3M2CVviTZC5GvbPjSvylTDqiCPMqxWUb6A/edit?usp=sharing',
     link: 'slides',
-    session: 'SX 10',
   },
   {
     title: 'Cloud FinOps and Sustainability on Kubernetes',
@@ -55,7 +49,6 @@ export const talks: Talk[] = [
     date: '2022-04-14',
     url: 'https://youtu.be/S07OdFshwDk?t=18360',
     link: 'video',
-    session: 'SX 09',
   },
   {
     title: 'Cloud FinOps and Sustainability on Kubernetes',
@@ -63,13 +56,11 @@ export const talks: Talk[] = [
     date: '2022-03-28',
     url: 'https://youtu.be/bHRBWbPkuX8',
     link: 'video',
-    session: 'SX 08',
   },
   {
     title: 'Kubernetes Backup y estrategias de migración con Velero',
     event: 'KCD Guatemala 2021',
     date: '2021-11-27',
-    session: 'SX 07',
   },
   {
     title: 'Kubernetes Backup and Migration Strategies with Velero',
@@ -77,7 +68,6 @@ export const talks: Talk[] = [
     date: '2021-11-18',
     url: 'https://youtu.be/xe-ZCvbrnoM?list=PLj6h78yzYM2M3cMd-zoDppjMo9eRmQrYU',
     link: 'video',
-    session: 'SX 06',
   },
   {
     title: 'Tag Allocation Strategies',
@@ -85,7 +75,6 @@ export const talks: Talk[] = [
     date: '2021-11-04',
     url: 'https://youtu.be/0JdG9kP6EB0?list=PL81sUbsFNc5a9a3tHKJXBqssaU4_nhGpG',
     link: 'video',
-    session: 'SX 05',
   },
   {
     title: 'Running Apache Spark on K8s',
@@ -93,7 +82,6 @@ export const talks: Talk[] = [
     date: '2021-06-08',
     url: 'https://youtu.be/UBZqr8q9ygo',
     link: 'video',
-    session: 'SX 04',
   },
   {
     title: 'Kubernetes PSP',
@@ -101,7 +89,6 @@ export const talks: Talk[] = [
     date: '2020-12-21',
     url: 'https://youtu.be/ufDk1LGd3dw',
     link: 'video',
-    session: 'SX 03',
   },
   {
     title: 'From Localhost to Prod',
@@ -109,7 +96,6 @@ export const talks: Talk[] = [
     date: '2020-09-10',
     url: 'https://youtu.be/i2OdR6EfJXg',
     link: 'video',
-    session: 'SX 02',
   },
   {
     title: 'Deploying Spark on the Cloud (GCP, AWS, Azure)',
@@ -117,6 +103,5 @@ export const talks: Talk[] = [
     date: '2019-11-14',
     url: 'https://youtu.be/HREbuQbuv-k',
     link: 'video',
-    session: 'SX 01',
   },
 ];
